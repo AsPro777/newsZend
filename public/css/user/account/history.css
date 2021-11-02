@@ -1,0 +1,29 @@
+#tickets-table td {
+    vertical-align: top;
+}
+
+#tickets-table span.glyphicon {
+    cursor: pointer;
+}
+
+span.w_cost {
+    width: 70px;
+    display: inline-block;
+}
+span.w_reis {
+    width: 100px;
+    display: inline-block;
+}
+
+span.green {
+    color: green;
+}
+span.yellow {
+    color: orange;
+}
+span.strike {
+    text-decoration: line-through;
+}
+span.returned {
+    color: orangered;
+}

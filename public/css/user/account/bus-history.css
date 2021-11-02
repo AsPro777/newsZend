@@ -1,0 +1,42 @@
+td.right, th.right {
+    text-align: right;
+}
+td.center, th.center {
+    text-align: center;
+}
+
+span.pull-right {
+    margin-left: 5px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-right:hover {
+    cursor: pointer;
+    color: #007fff;
+}
+span.pull-right.btn-xs {
+    color: #fff;
+}
+span.pull-right i.fa {
+    padding-top: 3px;
+}
+
+.fancytree-ico-e span.fancytree-icon ,
+.fancytree-has-children.fancytree-ico-cf span.fancytree-icon,
+span.fancytree-icon
+{
+    background-position: -80px -16px  !important;
+}
+
+.fancytree-ico-c .fancytree-icon::after, 
+.fancytree-ico-e .fancytree-icon::after, 
+.fancytree-exp-cl .fancytree-expander::after,
+.fancytree-exp-el .fancytree-expander::after, 
+.fancytree-exp-edl .fancytree-expander::after,
+.fancytree-has-children.fancytree-ico-ef .fancytree-icon::after,
+.fancytree-has-children.fancytree-ico-cf .fancytree-icon::after,
+.fancytree-ico-cf .fancytree-icon::after, 
+.fancytree-ico-ef .fancytree-icon::after
+{
+    content: '' !important;
+}

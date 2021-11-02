@@ -1,0 +1,99 @@
+form div.row {
+    padding-top: 5px;
+}
+form div.row-submit {
+    padding-top: 20px;
+}
+form div.input-group[class*="col-"] {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+input.btn.right {
+    float: right;
+    margin-left: 5px;
+}
+div.doc-form {
+    display: none;
+}
+
+span.pull-right {
+    margin-left: 5px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-right:hover {
+    cursor: pointer;
+    color: #007fff;
+}
+span.pull-right.btn-xs {
+    color: #fff;
+}
+span.pull-right i.fa {
+    padding-top: 3px;
+}
+td.right, th.right {
+    text-align: right;
+}
+td.center, th.center {
+    text-align: center;
+}
+td.clickable {
+    text-align: center;
+    cursor: pointer;
+    background-color: #f4f8f8;
+    border: 1px solid #e6e3db;
+}
+td.clickable:hover {
+    text-align: center;
+    cursor: pointer;
+    background-color: #e8f3f3;
+}
+
+table#drivers > thead > tr > th, table#drivers > tbody > tr > th, table#drivers > tfoot > tr > th, table#drivers > thead > tr > td, table#drivers > tbody > tr > td, table#drivers > tfoot > tr > td,
+table#path > thead > tr > th, table#path > tbody > tr > th, table#path > tfoot > tr > th, table#path > thead > tr > td, table#path > tbody > tr > td, table#path > tfoot > tr > td
+{
+    padding: 0 !important;
+}
+table#lists > thead > tr > th, table#lists > tbody > tr > th, table#lists > tfoot > tr > th, table#lists > thead > tr > td, table#lists > tbody > tr > td, table#lists > tfoot > tr > td
+{
+    padding: 0 5px !important;
+}
+
+.my-control {
+    display: initial;
+    min-width: 150px;
+    width: calc(100% - 40px);
+}
+.btn-my-control {
+    margin-left: 3px;
+    float: right;
+    width: 30px;
+    height: 30px;
+    padding: 0 !important;
+}
+.btn-my-control .glyphicon, table#lists .glyphicon
+{
+    font-size: 12px;
+}
+
+
+table#lists .btn-xs {
+    padding: 0 5px;
+}
+
+#filter-form {
+    color: black;
+}
+#filter-form .white{
+    color: white;
+}
+#filter-form input {
+    text-align: center;
+    width: 100px;
+}
+
+#doc-form .form-control {
+    padding: 5px;
+    font-size: 12px;
+    height: 26px;
+}

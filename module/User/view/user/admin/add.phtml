@@ -1,0 +1,111 @@
+<?php
+$this->headTitle('Регистрация пользователя');
+
+//$this->mainMenu()->setActiveItemId('dropdown-menu');
+
+//$this->pageBreadcrumbs()->setItems([
+//            'Начало'=>$this->url('home'),
+//            'Управление пользователями'=>$this->url('users'),
+//            'Регистрация пользователя'=>$this->url('users', ['action'=>'add'])
+//            ]);
+
+$form->get('sprUsrType')->setAttributes([
+    'class'=>'form-control', 
+    ]);
+$form->get('email')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'name@example.com'
+    ]);
+$form->get('f')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'Фамилия'
+    ]);
+$form->get('i')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'Имя'
+    ]);
+$form->get('o')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'Отчество'
+    ]);
+
+$form->get('password')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Пароль'
+    ]);
+
+$form->get('confirm_password')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Повторите пароль'
+    ]);
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+
+$form->prepare();
+?>
+
+<h1>Регистрация пользователя</h1>
+<p>Заполните форму и нажмите кнопку <i>Регистрация</i>.</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+                
+        <div class="form-group">
+            <?= $this->formLabel($form->get('sprUsrType')); ?>
+            <?= $this->formElement($form->get('sprUsrType')); ?>
+            <?= $this->formElementErrors($form->get('sprUsrType')); ?>                  
+        </div>
+
+        <div class="form-group">
+            <?= $this->formLabel($form->get('email')); ?>
+            <?= $this->formElement($form->get('email')); ?>
+            <?= $this->formElementErrors($form->get('email')); ?>                  
+        </div>
+             
+        <div class="form-group">
+            <?= $this->formLabel($form->get('f')); ?>
+            <?= $this->formElement($form->get('f')); ?>
+            <?= $this->formElementErrors($form->get('f')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('i')); ?>
+            <?= $this->formElement($form->get('i')); ?>
+            <?= $this->formElementErrors($form->get('i')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('o')); ?>
+            <?= $this->formElement($form->get('o')); ?>
+            <?= $this->formElementErrors($form->get('o')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('password')); ?>
+            <?= $this->formElement($form->get('password')); ?>
+            <?= $this->formElementErrors($form->get('password')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('confirm_password')); ?>
+            <?= $this->formElement($form->get('confirm_password')); ?>
+            <?= $this->formElementErrors($form->get('confirm_password')); ?>                  
+        </div>
+                
+        <div class="form-group">
+            <?= $this->formLabel($form->get('status')); ?>
+            <?= $this->formElement($form->get('status')); ?>
+            <?= $this->formElementErrors($form->get('status')); ?>                  
+        </div>
+        
+        <?= $this->formElement($form->get('submit')); ?>
+        
+        <?= $this->form()->closeTag(); ?>
+    </div>    
+</div>   
+

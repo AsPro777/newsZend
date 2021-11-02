@@ -1,0 +1,603 @@
+/*  
+    footer 
+*/
+div.text-muted {
+    padding: 0 10px;    
+}
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;  
+  background-color: #263238;
+  color: #fff;
+  z-index: 100;
+  border-top: solid 1px #414141;
+}
+div.account-switcher .btn:hover, .btn:focus, .btn.focus {
+    color: #999;
+    text-decoration: none;
+}
+div.account-switcher .btn:hover span.caret {
+    color: #fff;
+    text-decoration: none;
+    background-color: #4DB6AC;
+    border-radius: 50%
+}
+/* 
+    bell window 
+*/
+div.modal-header > button.close {
+    font-size: 34px;
+    font-weight: lighter;    
+}
+
+a.menu-briefcase, 
+a.menu-bell, 
+a.menu-moderation, 
+a.menu-zit-errors, 
+a.menu-returns, 
+a.menu-responses, 
+a.menu-sessions, 
+a.menu-tickets,
+a.menu-news{
+    cursor: pointer;
+}
+
+a.menu-briefcase:hover, 
+a.menu-bell:hover, 
+a.menu-moderation:hover, 
+a.menu-zit-errors:hover, 
+a.menu-sessions:hover, 
+a.menu-returns:hover, 
+a.menu-responses:hover, 
+a.menu-tickets:hover,
+a.menu-news:hover{
+    color: #26a69a !important;
+}
+
+@-webkit-keyframes blink-badge {
+  50% {
+    background-color: lightred;
+    border: 1px solid lightsalmon;
+  }
+  0% {
+    background-color: red;
+    border: 1px solid lightsalmon;
+  }
+}
+
+a.menu-briefcase span.badge, 
+a.menu-bell span.badge, 
+a.menu-moderation span.badge, 
+a.menu-zit-errors span.badge, 
+a.menu-returns span.badge, 
+a.menu-responses span.badge, 
+a.menu-sessions span.badge, 
+a.menu-tickets span.badge,
+a.menu-news span.badge{
+  -webkit-animation: blink-badge 1s infinite;  /* Safari 4+ */
+  -moz-animation: blink-badge 1s infinite;  /* Fx 5+ */
+  -o-animation: blink-badge 1s infinite;  /* Opera 12+ */
+  animation: blink-badge 1s infinite;  /* IE 10+, Fx 29+ */  
+}
+.modal-title {
+    color: #333333;
+}
+
+/* 
+    bus widget 
+*/
+.raw-place {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    border: #666 1px solid;
+    border-radius: 5px;
+    margin: 2px;
+    text-align: center;
+    padding-top: 2px;
+    cursor: default;
+    box-shadow: 5px 5px 13px -8px #000000;
+}
+.raw-place.blocked {
+    background-color: #ececec;
+}
+.raw-place.my-blocked {
+    background-color: darkgrey;
+}
+.raw-place:hover {
+    opacity: .75;
+}
+.raw-place.vacant {
+    background-color: lightgreen;
+    cursor: pointer;
+}
+.raw-place.vacant:hover {
+    background-color: green;
+    cursor: pointer;
+}
+.raw-place.reserved {
+    background-color: #f9f973;
+    cursor: pointer;
+}
+.raw-place.sold {
+    background-color: #fbad90;
+    cursor: pointer;
+}
+
+/*
+    Раскраска GoBus...
+*/
+
+.go {
+    color: #4EBBDB;
+    font-size: 13px;
+}
+.bus {
+    color:#69CB00;
+    font-size: 13px;
+}
+.aponline {
+    color:#6AAACD;
+    font-size: 13px;
+}
+
+/*
+    Разное...
+*/
+
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+.justify {
+    text-align: justify;
+}
+
+.clear {
+    clear: both;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+/*Bell*/
+tr.popover-container > td {
+    background-color: rgb(231, 231, 231);        
+}
+tr.popover-container td {    
+    font-size: 13px !important;
+}
+tr.popover-container > td > button.close {
+    margin-top: -35px !important;
+}
+tr.popover-container > td > h5 {
+    font-weight: bold;
+}
+tr.popover-container span.btn-xs {
+    cursor: pointer;
+    margin-left: 5px;
+}
+#bellModal div.modal-lg {
+    width: 900px !important;
+}
+
+/* 
+    sidebar 
+*/
+.sidebar {
+    -max-width: 260px;
+    width: 220px;    
+}
+.navigation > li > a {    
+    min-height: 25px;
+    font-weight: 500;
+}
+.navigation > li ul li a {
+	padding: 0px 10px;
+	padding-left: 15px;
+	min-height: 25px;
+}
+/* 
+    sidebar-main
+*/
+.sidebar-xs .sidebar-main {
+    width: 26px;
+}
+.sidebar-xs .sidebar-main .navigation > li > a > i {
+    margin: 2px 5px;
+}
+
+/* 
+    sidebar-secondary 
+*/
+.sidebar-secondary {
+    min-width: 100px;
+}
+
+/* 
+    sidebar-opposite 
+*/
+.sidebar-opposite {
+    max-width: 260px;
+    width: 100px;
+}
+/*  
+    settings-block для одиноких форм
+*/
+div.settings-block {
+    width: 700px;
+    margin-left: 10%;
+}
+div.settings-block-900 {
+    width: 950px;
+    margin-left: 5%;
+}
+
+@media (max-width: 1000px) {
+    
+    div.settings-block,
+    div.settings-block-900 {
+        margin-left: 0px;
+    }
+}
+
+
+.panel-heading {
+    font-weight: 600;   
+    background-color: #4DB6AC;
+    color: white;
+}
+.panel {
+    border-color: #009688;
+}
+
+.btn-primary,
+.btn-primary:active:hover, 
+.btn-primary.active:hover, 
+.open > .dropdown-toggle.btn-primary:hover, 
+.btn-primary:active:focus, 
+.btn-primary.active:focus, 
+.open > .dropdown-toggle.btn-primary:focus, 
+.btn-primary:active.focus, 
+.btn-primary.active.focus, 
+.open > .dropdown-toggle.btn-primary.focus {
+	background-color: #4DB6AC;
+	border-color: #4DB6AC;
+	color: #fff;
+}
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary.focus {
+	background-color: #009688;
+	border-color: #00695C;
+	color: #eee;
+}
+span.submit {
+    cursor: pointer;
+}
+span.submit:hover {
+    opacity: .8;
+}
+
+span.btn-xs {
+    line-height: 1 !important;
+    width: 25px !important;
+    height: 23px !important;
+    padding: 0;
+}
+
+span.btn-xs span {
+    padding: 4px !important;
+}
+
+.panel-title {
+    margin-right: 20px;
+}
+
+/*
+    secondary meny - path-list
+*/
+#path_menu td {
+    cursor: pointer;    
+    color: white;
+}
+
+#path_menu td.active {
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.32);    
+}
+
+#path_menu td:hover {
+    color: #05ffff;
+}
+
+
+.nav-bar-icons {
+    padding: 5px;
+}
+
+/*
+    Иконки на панели списка маршрутов
+*/
+
+.sidebar-secondary .top-path-icons {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+/* hide button when panel opened */
+body:not(.sidebar-secondary-hidden) .sidebar-secondary-hide {
+    display: none;
+}
+
+/*
+    Календарь на панели списка маршрутов
+*/
+
+.sidebar-secondary .sidebar-content {
+    overflow: auto;
+    height: calc( 100% - 203px );
+    position: absolute;
+    top: 24px;
+    width: 100%;
+/*    width: -moz-max-content;
+    width: -webkit-max-content;
+    width: -o-max-content;
+    width: -ms-max-content;*/
+    
+}
+
+#sidebar-datepicker {
+    position: absolute;
+    -bottom: 22px;    
+    width: 100%;
+}
+#sidebar-datepicker .ui-widget-header {
+    border: none;
+    background-color: unset !important;/*#00695C;*/
+    color: whitesmoke;    
+    margin: -16px 2px;
+}
+#sidebar-datepicker .ui-datepicker .ui-datepicker-prev, 
+#sidebar-datepicker .ui-datepicker .ui-datepicker-next {
+	height: auto;
+        color: #cca3a3;
+}
+#sidebar-datepicker .ui-datepicker {
+    border: none;
+    background-color: unset !important;
+    line-height: 1;
+    -padding: 0 0px 5px 0px;
+    width: 100%;
+}
+
+#sidebar-datepicker .ui-datepicker table td span, 
+#sidebar-datepicker .ui-datepicker table td a {
+    padding: 6px !important;
+    color: #dbdbdb;
+    min-width: 10px;
+    border: none;
+    background: none;
+    font-size: 13px;
+}
+#sidebar-datepicker .ui-datepicker table td span, 
+#sidebar-datepicker .ui-datepicker table td a:hover {    
+    color: black;
+}
+
+#sidebar-datepicker .ui-datepicker table th {
+    text-align: center;
+    color: #dbdbdb;
+}
+
+#sidebar-datepicker .ui-state-highlight {
+	height: auto;
+}
+
+#sidebar-datepicker .ui-state-active, 
+#sidebar-datepicker .ui-widget-content .ui-state-active, 
+#sidebar-datepicker .ui-widget-header .ui-state-active, 
+#sidebar-datepicker a.ui-button:active, 
+#sidebar-datepicker .ui-button:active, 
+#sidebar-datepicker .ui-button.ui-state-active:hover {
+    border: 0px solid teal !important;
+    background: teal !important;
+}
+
+#sidebar-datepicker .ui-state-disabled, 
+#sidebar-datepicker .ui-widget-content .ui-state-disabled, 
+#sidebar-datepicker .ui-widget-header .ui-state-disabled {
+	opacity: 1;	
+}
+
+/*
+    Панель с кнопками в списках юзеров
+*/
+tr.dropdown-row > td:last-child
+{
+    vertical-align: top;
+}
+
+/*
+    В модальном диалоге
+*/
+div.bordered-modal-content {
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    padding: 15px;    
+}
+
+/*
+    myEditable in table rows
+*/
+
+table .input-sm {
+    height: 24px;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 1.6666667;
+    border-radius: 2px;
+}
+
+table div.editable-buttons .btn {
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5384616;
+    border-radius: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0;
+}
+
+.editable-container {
+    z-index: 9000;   
+    position: relative;
+}
+
+.editable-container .btn-primary {
+    background-color: #009688;
+    border-color: #4DB6AC;
+    color: #fff;
+}
+.editable-container .btn-primary:hover {
+    background-color: #4DB6AC;
+    border-color: #4DB6AC;
+    color: #eee;
+}
+
+.full-screen-glass  {
+    position: fixed;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.05);
+    z-index: 8999;
+}
+
+/*
+    Неприятность с большими чекбоксами в хроме...
+*/
+
+input[type="checkbox"].form-control,
+input[type="radio"].form-control
+{
+    width: unset;
+}
+
+/*
+    Таблица в алертах и конфирмах
+*/
+.alert-table {        
+	width: auto;
+	font-weight: normal;
+	text-align: left;	
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.alert-table th {
+    font-weight: bold;
+    padding-right: 10px;
+    vertical-align: top;
+    white-space: nowrap;
+    font-size: 14px;
+}
+.alert-table td {
+    vertical-align: top;    
+    font-size: 14px;
+}
+
+/*
+    Hide all add form
+*/
+.content div.driver-form,
+.content div.bus-form,
+.content form#edit-form,
+.content form#drv-schedulers-form
+{
+    display: none;
+}
+
+/*
+    Поле поиска информации о пассажире в шапке
+*/
+div.navbar-user-phone {
+    margin: 0;
+    width: 150px;
+}
+
+div.navbar-user-phone div.form-group {
+    margin: 10px 0;
+}
+
+div.navbar-user-phone input.user-phone-control {
+    display: block;
+    width: 100%;
+    height: 22px;
+    padding: 5px;
+    font-size: 12px;
+    -color: #333333;
+    border: 1px solid #606060;
+    border-radius: 4px;
+    
+    background-color: #37474f;
+    color: whitesmoke;    
+}
+
+div.navbar-user-phone .text-size-base {
+    font-size: 12px;
+    top: -8px;
+    right: -8px;
+    color: white;
+}
+
+/*
+   Главное меню
+*/
+.navigation-main a.head {
+    font-weight: bolder; 
+}
+.navigation-main a.head i {
+    width: 3px;    
+}
+
+.navigation-main a.item i {
+    width: 15px;
+}
+
+/*
+   Кнопка FAB
+*/
+.fab-menu-absolute.affix {
+    left: 1px;
+}
+.fab-menu-absolute.affix.top {    
+    bottom: 60px;
+}
+.fab-menu-absolute.affix.down {    
+    bottom: 25px;
+}
+.fab-menu-btn.btn-float {
+    padding: 15px;
+}
+.fab-menu:hover .fab-icon {
+    opacity: 0.6; 
+    filter: alpha(opacity=.6);
+}

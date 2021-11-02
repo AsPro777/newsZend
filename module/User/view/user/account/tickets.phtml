@@ -1,0 +1,284 @@
+<?php
+$title = "Ответы техподдержки";
+$this->headTitle($title);
+$this->partial('/user/account/partial/script-and-style');
+//$this->headLink()
+//      ->prependStylesheet($this->basePath('css/jquery-ui.css'))
+//        ;
+
+//$this->headScript()
+//            ->prependFile($this->basePath('js/jquery-ui.js'))
+//        ;
+?>
+
+<!-- Page header -->
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><i class="fa fa-user-circle position-left"></i> <?=$title?></h4>
+            <div class="heading-elements">
+                    <div class="heading-btn-group">
+                        <? if(!$granted["sa"]) : ?>
+                            <a href="#" class="btn btn-link btn-float has-text btn-show-form"><i class="icon-add text-teal-300"></i><span>Новый тикет</span></a>
+                        <? endif; ?>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+
+<!-- Content area -->
+<div class="content">
+
+<?=$this->partial('/user/account/partial/message', ['successMessage'=>$successMessage, 'errorMessage'=>$errorMessage])?>
+
+<div class="row new-ticket">
+    <div>
+        <div class="panel">
+          <div class="panel-heading">
+              <h5 class="panel-title">Новый тикет</h5>
+          </div>
+          <form class="panel-body" name="add-new-ticket" >
+
+            <div>
+               <div class="col-md-2">
+                    Заголовок:
+                </div>
+                <div class="col-md-10">
+                    <input name="name" class="form-control add-ticket" type="text" value="<?=$this->escapeHtml(isset($post["name"])?$post["name"]:"")?>" maxlength="100" placeholder="Введите заголовок обращения...">
+                </div>
+            </div>
+            <div>
+               <div class="col-md-2">
+                    Обращение:
+                </div>
+                <div class="col-md-10">
+                    <textarea name="text" class="form-control add-ticket" rows="6" placeholder="Введите текст обращения. Укажите адрес страницы с проблемой и максимально подробно последовательность Ваших действий и технические особенности проблемы. "><?=$this->escapeHtml(isset($post["text"])?$post["text"]:"")?></textarea>
+                </div>
+            </div>
+
+            <div class="row row-submit">
+              <div class="col-md-12 center add-ticket">
+                  <div class="load-file">
+                     <label for="addFilesInNewTicket" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-add"></i></b>Прикрепить файлы</label>
+                     <input multiple type="file" id=addFilesInNewTicket name=addFilesInNewTicket[] style="outline:0;opacity:0;pointer-events:none;user-select:none">
+                      <div class="around-load-images-new-ticket">
+                      </div>
+
+                  </div>
+                  <div class="control-load-file">
+                     <input class="btn btn-sm btn-primary right" id="submitTickets" value="Создать тикет" type="button">
+                     <input class="btn btn-sm btn-primary right" value="Отмена" type="reset">
+                  </div>
+
+              </div>
+            </div>
+         </form>
+        </div>
+    </div>
+</div>
+ <?php $i=0;?>
+<?php foreach ($heads as $head) : ?>
+
+<div class="panel panel-collapsed ticket-place" name="<?=$head["id"]?>" data-status="<?=$head["status"]?>">
+
+<div class="panel-heading">
+    <h5 class="panel-title"><?=$this->escapeHtml($head["name"])?></h5>
+    <div class="heading-elements">
+        <ul class="icons-list">
+            <li><?=$head["status_text"]?></li>
+            <li><span class="label label-default label-bordered"><?=$head["date_modify"]?> <?=$head["time_modify"]?></span></li>
+            <li><a data-action="collapse" class="" name=<?=$head["id"]?>></a></li>
+        </ul>
+    </div>
+</div>
+
+    <form enctype="multipart/form-data" method="POST" id='www<?=$i?>' class="panel-body" name="add-files-in-ticket">
+
+    <div class="row">
+        <div class="col-xs-9 text-right">
+            <textarea name="text" class="form-control content-group" rows="6" cols="1" placeholder="Введите текст ответа..."></textarea>
+        </div>
+        <div class="col-xs-3 text-left">
+            <div class="load-file-exist">
+               <label for="addFilesIntoExistTicket<?=$i?>" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-circle-right2"></i></b>Прикрепить файлы</label>
+
+               <input multiple="multiple"  type="file" id='addFilesIntoExistTicket<?=$i?>' name=addFilesIntoExistTicket<?=$i?>[] style="outline:0;opacity:0;pointer-events:none;user-select:none">
+
+               <div class="around-load-images-exist-ticket">
+               </div>
+            </div>
+            <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right" name="answer"><b><i class="icon-circle-right2"></i></b> Отправить</button>
+        <?php $i++;?>
+        <? if( $head["status"] != 5 ): ?>
+            <div style="width:100%; height: 23px;"></div>
+            <button type="button" class="btn bg-info-400 btn-labeled btn-labeled-right" name="close"><b><i class="icon-thumbs-up2"></i></b> Спасибо, закрыть тикет!</button>
+        <? endif; ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <ul class="icons-list icons-list-extended mt-10">
+                <? if( !$granted["sa"] && false) : ?>
+                <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send photo"><i class="icon-file-picture"></i></a></li>
+                <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send video"><i class="icon-file-video"></i></a></li>
+                <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send file"><i class="icon-file-plus"></i></a></li>
+                <? endif; ?>
+            </ul>
+        </div>
+    </div>
+
+    <?php
+        $date_reg = "";
+    ?>
+    <?php foreach ($head["tickets"] as $ticket) : ?>
+    <ul class="media-list chat-stacked content-group">
+
+    <?php
+        if($ticket["date_reg"] != $date_reg) :
+        $date_reg = $ticket["date_reg"];
+    ?>
+        <li class="media date-step content-divider text-muted"><span><i class="icon-calendar2 position-right text-muted"></i> <?=$date_reg?> </span></li>
+    <?php
+        endif;
+    ?>
+
+        <li class="media">
+            <div class="media-body">
+                <div class="media-heading">
+                    <span class="media-annotation"><i class="icon-alarm position-right text-muted"></i> <?=$this->escapeHtml($ticket["time_reg"])?> </span>
+                    <span class="author"><?=$this->escapeHtml($ticket["user"])?></span>
+                </div>
+                <?= nl2br($this->escapeHtml($ticket["text"]))?>
+
+
+            </div>
+        </li>
+        <?php
+            if($ticket["jsondata"]!=='{}'){
+            $pic= json_decode($ticket['jsondata']);
+        ?>
+        <li class="media-image">
+            <div class="media-body">
+                <div class="media-heading">
+                    <span class="media-annotation"><i class="icon-images2 position-right text-muted"></i> Загруженные изображения </span>
+                </div>
+            <?php
+             foreach($pic->images as $pictures){
+                        $resizeImg='/account/tickets?resize=yes&id='.$ticket['id'].'&name='.$pictures->name;
+                        $showImage='/account/tickets?id='.$ticket['id'].'&name='.$pictures->name;
+             ?>
+             <a target="_blanc" href=<?=$showImage?>> <img src=<?=$resizeImg?>> </a>
+             <?php }?>
+            </div>
+        </li>
+
+        <?php }
+        ?>
+    </ul>
+    <?php endforeach; ?>
+
+</form>
+</div>
+
+<?php endforeach; ?>
+
+<?php if(empty($heads)) : ?>
+<!-- Table -->
+<table class="table table-striped table-hover table-framed table-xxs">
+    <tr>
+        <th>У Вас пока нет тикетов.</th>
+    </tr>
+    <tr>
+        <th>
+            <p>
+            Тикет - это переписка с нашей техподдержкой. <p>
+            Если Вы хотите обратиться в техподдержку для решения тех или иных технических проблем, создайте новый тикет и напишите свое обращение. <p>
+            Если ответ Вас не удовлетворил или появились дополнительные вопросы, продолжите задавать вопросы в существующем тикете. <p>
+            Для Вашего удобства при создании нового тикета Вы можете указать его наименование - тему. <p>
+            Вы можете продолжить любой тикет, независимо от его статуса. <p>
+            Тикеты удаляются автоматически только если они находятся в статусе "Закрыт" через 3 месяца после закрытия.
+        </th>
+    </tr>
+  </table>
+<?php endif;?>
+
+
+<?php if(sizeof($heads) == $page_size) : ?>
+<!-- Table -->
+<table class="table table-striped table-hover table-framed table-xxs">
+    <tfooter>
+    <tr>
+        <th>
+            <ul class="pager">
+                <li><a id="next-page" href="#" data-page="0">Следующие <?=$page_size?></a></li>
+            </ul>
+        </th>
+    </tr>
+    </tfooter>
+  </table>
+<?php endif;?>
+
+</div>
+<!-- /Content area -->
+
+
+<div class="panel panel-collapsed head-template">
+
+<div class="panel-heading">
+    <h5 class="panel-title"></h5>
+    <div class="heading-elements">
+        <ul class="icons-list">
+            <li></li>
+            <li><span class="label label-default label-bordered"></span></li>
+            <li><a data-action="collapse" class="" ></a></li>
+        </ul>
+    </div>
+</div>
+
+<form class="panel-body">
+
+    <div class="row">
+        <div class="col-xs-10 text-right">
+            <textarea name="text" class="form-control content-group" rows="3" cols="1" placeholder="Введите текст ответа..."></textarea>
+            <input name="text" style="display:none">
+        </div>
+        <div class="col-xs-2 text-left">
+            <button type="button" class="btn bg-teal-400 btn-labeled btn-labeled-right" name="answer"><b><i class="icon-circle-right2"></i></b> Отправить</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <ul class="icons-list icons-list-extended mt-10">
+                <? if( !$granted["sa"] && false) : ?>
+                <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send photo"><i class="icon-file-picture"></i></a></li>
+                <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send video"><i class="icon-file-video"></i></a></li>
+                <li><a href="#" data-popup="tooltip" title="" data-container="body" data-original-title="Send file"><i class="icon-file-plus"></i></a></li>
+                <? endif; ?>
+            </ul>
+        </div>
+    </div>
+
+</form>
+</div>
+
+<ul class="media-list chat-stacked content-group ticket-template"></ul>
+
+<li class="media date-step content-divider text-muted divider-template"><span><i class="icon-calendar2 position-right text-muted"></i> </span></li>
+
+<li class="media media-template">
+    <div class="media-body">
+        <div class="media-heading">
+            <span class="media-annotation"><i class="icon-alarm position-right text-muted"></i> </span>
+            <span class="author"></span>
+        </div>
+    </div>
+</li>
+<?php
+echo <<<JS
+         <script type="text/javascript">
+             var ajax_action='$action';
+         </script>
+JS;
+?>

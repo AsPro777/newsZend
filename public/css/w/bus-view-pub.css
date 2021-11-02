@@ -1,0 +1,130 @@
+#the_bus_salon {
+    background: white;
+    padding-left: 4px !important;
+    padding-bottom: 5px !important;    
+}   
+
+.place_active {
+  background-color: lightgreen;
+  border: darkgreen 1px solid;
+}
+
+.place_warning {
+  background-color: orangered !important;
+  border: darkgreen 1px solid;
+}
+
+#bus {
+ border: none !important;
+}
+
+#bus table {
+ border-collapse: unset;
+ width: 100%;
+}
+
+#bus table td {
+ vertical-align: top;
+ padding: 10px
+}
+
+.bus-place-number-input {
+ color: black;
+ width: 20px;
+ text-align: center;
+ border: white 1px solid;
+ background-color: lightgreen;
+}
+
+div.raw-places {
+ display: none;
+}
+
+.empty-place-color {
+    background-color: lightgreen;       
+}
+.sold-place-color {
+    background-color: #fbad90;       
+}
+.reserved-place-color {
+    background-color: yellow;   
+}
+.self-reserved-color {
+    background-color: #009240;   
+}
+.reserved-color {
+    background-color: #ececec;   
+}
+
+.empty-place-color, .sold-place-color, .reserved-place-color, .self-reserved-color, .reserved-color {
+    color: black;
+    padding: 1px 5px 1px 5px;
+    border-radius: 3px;
+}
+
+.bus_place {
+    color: #1a3c4d;
+    margin: 0 3px 0 0;
+}
+
+#bus {
+    padding: 0;    
+    margin: 0 0 0 -10px;
+}
+#bus tr {
+    border-bottom: none;  
+}
+  
+#bus .raw-place.blocked {
+    background-color: #ececec;
+}
+
+#bus .raw-place {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    border: #666 1px solid;
+    border-radius: 5px;
+    margin: 2px;
+    text-align: center;
+    padding-top: 2px;
+    cursor: default;
+    box-shadow: 5px 5px 13px -8px #000000;
+}
+
+#bus .raw-place.blocked {
+    background-color: #ececec;
+}
+#bus .raw-place.my-blocked {
+    background-color: #009240;
+    border-color: #111;
+}
+
+#bus .raw-place:hover {
+    opacity: .75;
+}
+#bus .raw-place.vacant {
+    background-color: lightgreen;
+    cursor: pointer;
+}
+#bus .raw-place.vacant:hover {
+    background-color: green;
+    cursor: pointer;
+}
+#bus .raw-place.reserved {
+    background-color: #f9f973;
+    cursor: pointer;
+}
+#bus .raw-place.sold {
+    background-color: #fbad90;
+    cursor: pointer;
+}
+
+#bus-spinner {
+    position: absolute;
+    left: 34px;
+    top: 19px;
+    color: #e0dbdb;
+    z-index: 1;
+    font-weight: lighter;
+}

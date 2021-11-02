@@ -1,0 +1,77 @@
+form div.row {
+    padding-top: 5px;
+}
+form div.row-submit {
+    padding-top: 20px;
+}
+form div.input-group[class*="col-"] {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+input.btn.right {
+    float: right;
+    margin-left: 5px;
+}
+div.edit-form,
+div.search-form,
+div.table-points {
+    width: 630px;
+}
+div.edit-form,
+div.search-form {
+    display: none;
+}
+
+span.pull-right {
+    margin-left: 2px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-right:hover {
+    cursor: pointer;
+    color: #007fff;
+}
+span.pull-right.btn-xs {
+    color: #fff;    
+}
+span.pull-right i.fa {
+    padding-top: 3px;
+}
+td.right, th.right {
+    text-align: right;
+}
+td.center, th.center {
+    text-align: center;
+}
+span.nowrap {
+    white-space: nowrap;
+}
+td.clickable {
+    cursor: pointer;
+    background-color: #f4f8f8;
+    border: 1px solid #e6e3db;
+    min-width: 450px;
+}
+td.clickable:hover {
+    cursor: pointer;
+    background-color: #e8f3f3;
+}
+.full-width-input {
+    width: calc( 100% - 70px );
+    font-size: 13px;
+    color: gray;
+    border: 1px solid #f5e5e5;
+    background-color: #f9f3f3;
+    float: left;
+}
+.well p {
+    font-size: 12px;
+    padding-top: 6px;
+}
+.well .fa {
+    margin-right: 6px;
+}
+
+#table-points-title {
+    font-weight: bold;
+}

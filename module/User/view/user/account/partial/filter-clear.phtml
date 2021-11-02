@@ -1,0 +1,15 @@
+<?php if(isset($options) && is_array($options))
+{
+    $option_name = isset($options["name"])?" name='{$options["name"]}'":" name='filter-clear'";
+    $option_id = isset($options["id"])?" id='{$options["id"]}'":" id='filter-clear'";
+    $option_class = isset($options["class"])?" class='{$options["class"]}'":" class='btn-sm btn-info'";
+    $option_icon = isset($options["icon"])?" class='{$options["icon"]}'":" class='glyphicon glyphicon-remove'";
+?>
+    <div class="input-group input-group-sm">                
+        <button type="button" <?=$option_class?><?=$option_id?><?=$option_name?>>
+            <span<?=$option_icon?>></span>
+        </button>
+    </div>  
+<?php           
+}
+?>

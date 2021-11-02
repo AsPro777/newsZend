@@ -1,0 +1,13 @@
+div.row {
+    margin-bottom: 5px;
+}
+div.row > div.center {    
+    text-align: center;
+    padding-top: 10px;
+}
+
+/*  settings-block */
+div.settings-block {
+    width: 700px;
+    margin-left: 15%;
+}

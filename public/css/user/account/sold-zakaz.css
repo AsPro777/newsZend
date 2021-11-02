@@ -1,0 +1,17 @@
+#filter-form {
+    color: black;
+}
+#filter-form input {
+    text-align: center;
+    width: 100px;
+}
+#filter-form > span {    
+    color: white;
+}
+#filter-form > button {    
+    padding: 1px 5px 2px 5px;
+}
+
+tr.bold th {
+    font-weight: bolder;
+}

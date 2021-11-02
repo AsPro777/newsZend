@@ -1,0 +1,243 @@
+<?php
+ $title = "Новости";
+ $this->headTitle($title);
+ $this->partial('/user/account/partial/script-and-style');
+ $this->headScript()->appendFile('/js/user/account/add-personal-news.js'.'?'.random_int(11111, 99999));
+
+?>
+
+<!-- Page header -->
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><i class="fa fa-object-group position-left"></i> <?=$title?></h4>
+            <?php  if( \User\Service\AccessChecker::isAdmin($this->user) ):  ?> <!--Если пользователь администратор то он может просматривать отсортированные новости.(все, только опубликованные или только сохраненные)А так же может добавлять новость -->
+            <div class="heading-elements">
+               <div class="heading-btn-group">
+                 <form id="filter-form" method="post">
+                   <div id="filterNews" class="filter">
+                     <label class="radio-inline">
+                       <div class="choice">
+                        <span <?=(($radioId=="all")?"class=checked":"")?>><input class="styled"  name="accepted" type="radio" value="all"></span>
+                          Все
+                       </div>
+
+                     </label>
+                     <label class="radio-inline">
+                       <div class="choice">
+                         <span <?=(($radioId=="publiced")?"class=checked":"")?>><input class="styled"  name="accepted" type="radio" value="publiced"></span>
+                           Опубликованные
+                       </div>
+
+                     </label>
+                     <label class="radio-inline">
+                       <div class="choice">
+                         <span <?=(($radioId=="saved")?"class=checked":"")?>><input class="styled"  name="accepted" type="radio" value="saved"></span>
+                           Сохраненные
+                       </div>
+
+                     </label>
+                     <a href="#" class="btn btn-link btn-float has-text btn-show-form"><i class="icon-add text-teal-300"></i><span>Добавить новость</span></a>
+                  </div>
+                 </form>
+               </div>
+            </div>
+            <?php endif;?>
+      </div>
+    </div>
+</div>
+
+<div class='content'>
+  <?php  if( \User\Service\AccessChecker::isAdmin($this->user) ):  ?>
+    <?=$this->partial('/user/account/partial/message', ['successMessage'=>$successMessage, 'errorMessage'=>$errorMessage])?>
+    <div class="row new-news" style="display:none;">
+        <div class="panel">
+          <form class="panel-body" name="add-new-news" >
+
+            <div>
+               <div class="col-md-2">
+                    Заголовок:
+                </div>
+                <div class="col-md-10">
+                    <input name="name" class="form-control add-news" type="text" value="<?=$this->escapeHtml(isset($post["name"])?$post["name"]:"")?>" maxlength="100" placeholder="Введите заголовок обращения...">
+                </div>
+
+            </div>
+            <div>
+               <div class="col-md-2">
+                    Обращение:
+                </div>
+                <div class="load-buttons">
+                  <div class="load-file">
+                     <label id="load-images" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-add"></i></b>Загрузить изображения</label>
+                  </div>
+                  <div class="load-main-pic">
+                     <label id="load-main-img" class="btn bg-teal-400 btn-labeled btn-labeled-right"><b><i class="icon-add"></i></b>Загрузить тему</label>
+                  </div>
+                </div>
+                <div class="col-md-10 new-news textNews">
+                    <textarea id="add-news" name="text" class="form-control add-news" rows="6" placeholder="Введите текст обращения. Укажите адрес страницы с проблемой и максимально подробно последовательность Ваших действий и технические особенности проблемы. "><?=$this->escapeHtml(isset($post["text"])?$post["text"]:"")?></textarea>
+                </div>
+                <div class="col-md-12 center textNews">
+
+               </div>
+            </div>
+
+            <div class="whenSend">
+                <fieldset>
+                  <legend class="whenSend">Куда выводить</legend>
+                  <input type="checkbox" name="onSite" value="onSite" id="onSite">  На сайт<Br>
+                  <input type="checkbox" name="onUserAccount" value="onUserAccount" id="onUserAccount">  В учетную запись<Br>
+                </fieldset>
+            </div>
+            <div class="col-md-12 center textNews">
+               <div class="control-load-file">
+                  <input class="btn btn-sm btn-primary" id="submitNews" value="Сохранить" style="opacity:0.5; cursor: not-allowed;" type="button">
+                  <input class="btn btn-sm btn-primary right" value="Отмена" type="reset">
+               </div>
+            </div>
+
+         </form>
+
+       </div>
+    </div>
+
+  <?php endif;?> <!--Если пользователь не админ он может только просматривать новости -->
+  <?php if(count($heads['heads'])!==0):?> <!--Если есть какие-то новости у данного человека они отобразятся иначе отобразится текст У вас нет новостей-->
+   <?php foreach ($heads['heads'] as $head) : ?> <!-- Перебираем каждую новость по отдельности-->
+    <?php if((($head->getStatus()=='public')&&(! \User\Service\AccessChecker::isAdmin($this->user)))||(\User\Service\AccessChecker::isAdmin($this->user))): ?>
+      <ul class="media-list chat-stacked"> <!-- Админу будут показаны все новости ( и опубликованые и сохраненные) Обычному пользователю же только опубликованые-->
+         <?php
+          $date_reg = "";
+          $newsType='Новость-';
+          if($head->getPublic()==true) $newsType=$newsType.' для паблика ';
+          if($head->getInside()==true) $newsType=$newsType.' внутренняя';
+          if($head->getCarrier()==true) $newsType=$newsType.' для перевозчика';
+          if($head->getPassenger()==true) $newsType=$newsType.' для пользователя';
+          if($head->getTerminal()==true) $newsType=$newsType.' для вокзалов';
+          if($head->getPersonal()==true) $newsType=$newsType.' персональная';
+
+          if($head->getDateReg() != $date_reg) :
+            $date_reg = $head->getDateReg();
+            $date_reg = explode(' ', $date_reg);
+         ?>
+           <?php
+             if(\User\Service\AccessChecker::isAdmin($this->user) ):
+           ?>
+            <li class="media date-step content-divider text-muted"><span><i class="icon-calendar2 position-right text-muted"></i> <?=$date_reg[0]?>  <?=$newsType?></span></li>
+           <?php else:?>
+            <li class="media date-step content-divider text-muted"><span><i class="icon-calendar2 position-right text-muted"></i> <?=$date_reg[0]?></span></li>
+           <?php endif;?>
+          <?php endif;?>
+         <?php
+          if($head->getAddFiles()!=='{}'): /*если в поле add_files есть изображения то их вывести*/
+             $pic=json_decode($head->getAddFiles());
+             $a='/account/singleNews/'.$head->getId();
+          ?>
+            <li class="media">
+             <div class="media-body">
+               <a href="<?=$a?>">
+                 <span class="head"><?=$this->escapeHtml($head->getHead())?></span>
+               </a>
+               <?php if(isset($pic->mainPic[0])):?>
+                 <a class="aForMainPic" href="<?=$a?>">
+                   <img src='/account/news?resize=yes&id=<?=$head->getId()?>&name=<?=$pic->mainPic[0]->name?>&selectPic=true' data-img="true">
+                 </a>
+               <?php else:?>
+                 <a class="aForMainPic" href="<?=$a?>">
+                   <img src="/img/about.jpg" width='70' height="70" data-img="flase">
+                 </a>
+               <?php endif; ?>
+               <?php
+                 $text=$head->getText();
+                 $textWithoutPic= strip_tags($text);
+                 $smallTextNews='';
+                 $chars = preg_split("//u", $textWithoutPic, 0, PREG_SPLIT_NO_EMPTY);/*разбивает строку по буквам*/
+
+                 for($i=0;$i<100;$i++)
+                 {
+                   if(isset($chars[$i])) $smallTextNews=$smallTextNews.$chars[$i];
+                 }
+                 $smallTextNews=$smallTextNews.'...';
+               ?>
+               <div class="textForShortNews">
+                 <?=htmlspecialchars_decode($smallTextNews)?>
+               </div>
+               <?php  if( \User\Service\AccessChecker::isAdmin($this->user) ):  ?>
+                 <div class="changeNewsButtons">
+                   <div id="changeNews">
+                     <a href='/account/edit-news/<?=$head->getId()?>'>
+                       <label class="btn bg-teal-400">Редактировать</label>
+                     </a>
+                   </div>
+                   <div id="deleteNews">
+                     <label class="btn bg-teal-400">Удалить</label>
+                   </div>
+                   <?php if($head->getStatus()!=='public'):?>
+                     <div id="publicNews">
+                       <label class="btn bg-teal-400">Просмотреть/опубликовать</label>
+                     </div>
+                   <?php endif;?>
+                 </div>
+               <?php endif;?>
+
+             </div>
+            </li>
+
+          <?php else:?> <!-- если в поле add_files нет изображений то выводить стандартную картинку-->
+            <li class="media">
+              <div class="media-body">
+              <?php $mainImg='/img/about.jpg';?>
+              <a href="/account/singleNews/<?=$head->getId()?>">
+                <span class="head"><?=$this->escapeHtml($head->getHead())?></span>
+              </a>
+
+              <a class="aForMainPic" href="/account/singleNews/<?=$head->getId()?>">
+                <img src="<?=$mainImg?>" width="70" height="70" >
+              </a>
+              <div class="textForShortNews">
+                <?=htmlspecialchars_decode($head->getText())?>
+              </div>
+              <?php  if( \User\Service\AccessChecker::isAdmin($this->user) ):  ?>
+                <div class="changeNewsButtons">
+                  <div id="changeNews">
+                   <a href='/account/edit-news/<?=$head->getId()?>'>
+                     <label class="btn bg-teal-400">Редактировать</label>
+                   </a>
+                  </div>
+                  <div id="deleteNews">
+                    <label class="btn bg-teal-400">Удалить</label>
+                  </div>
+                  <?php if($head->getStatus()!=='public'):?>
+                    <div id="publicNews">
+                      <label class="btn bg-teal-400">Просмотреть/опубликовать</label>
+                    </div>
+                  <?php endif;?>
+                </div>
+              <?php endif;?>
+              </div>
+            </li>
+          <?php endif;?>
+      </ul>
+     <?php endif;?>
+   <?php endforeach;?>
+  <?php else:?>
+    <h1 class="noNews">
+      У Вас нет новостей
+    </h1>
+  <?php endif;?>
+
+ </div>
+<ul class="pager">
+    <li><a id="next-page" href="#" data-page="0">Следующие <?=$page_size?></a></li>
+</ul>
+<?php
+$userTypeId=$user->getIdUsrType()->getId();
+echo <<<JS
+         <script type="text/javascript">
+             var ajax_action='$action';
+             var flag='$flag';
+             var user_type_id='$userTypeId';
+         </script>
+JS;
+?>

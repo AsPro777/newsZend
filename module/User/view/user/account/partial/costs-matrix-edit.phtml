@@ -1,0 +1,72 @@
+<?php
+    $nameFrom = \Application\Filter\PointInPointsFilter::getNameFrom($edTpl->getFromPoints());
+    $nameTo = \Application\Filter\PointInPointsFilter::getNameTo($edTpl->getToPoints());
+?>        
+
+    <div class="panel">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-ruble fa-1x"> </i> <?= $this->escapeHtml($title) ?></h3>
+          </div>
+          <div class="panel-body">                                          
+            <table class="table">
+                <tr>
+                    <th width="30%">Промежуточные пункты и остановки</th>
+                    <th>Цена от "<span name="city-from"> - </span>" до:</th>
+                </tr>
+                <tr>
+                    <td name="citys-from" id="citys-from">
+                        <div class="list-group">
+                        <b>Пункт отправления: <span name="from-city-name"><?=$nameFrom?></span></b>
+                        <?php foreach ($points as $key=>$val) : ?>    
+                            <?php if($val["type"]=="from") : ?>    
+                                <a href="#" class="list-group-item from from-point" name="<?=$val["data"][2]?>"><?=$val["data"][3]?></a>
+                            <?php endif; ?>    
+                        <?php endforeach; ?>    
+                        
+                        <br>  
+                        <b>Промежуточные пункты: </b>
+                        <?php foreach ($points as $key=>$val) : ?>    
+                            <?php if($val["type"]=="trace") : ?>    
+                                <a href="#" class="list-group-item from trace-point" name="<?=$val["data"][2]?>"><?=$val["data"][1]?> - <?=$val["data"][3]?></a>
+                            <?php endif; ?>    
+                        <?php endforeach; ?>    
+                        
+                        <br>  
+                        <b>Пункт назначения: <span name="to-city-name"><?=$nameTo?></span></b>
+                        <?php foreach ($points as $key=>$val) : ?>    
+                            <?php if($val["type"]=="to") : ?>    
+                                <a href="#" class="list-group-item from to-point" name="<?=$val["data"][2]?>"><?=$val["data"][3]?></a>
+                            <?php endif; ?>    
+                        <?php endforeach; ?>    
+                        </div>                        
+                    </td>
+                    <td name="citys-to" id="citys-to">
+                        <table>
+                        <?php foreach ($points as $key=>$p): ?>    
+                            <?php 
+                                for($i=$key+1; $i<sizeof($points); $i++)
+                                { 
+                                  $name = $p["data"][2]."-".$points[$i]["data"][2];  
+                            ?>    
+                            <tr class="hidden">
+                                <td><?=$points[$i]["data"][1]?>. <?=$points[$i]["data"][3]?>.</td>
+                                <td><input name="<?=$name?>" class="cost-input" value="<?=(isset($costs[$name])?$costs[$name]:0)?>"></td>
+                            </tr>
+                            <?php } ?>    
+                        <?php endforeach; ?>    
+                        </table>                        
+                    </td>
+                </tr>
+            
+                <tr>
+                    <th> </th>                    
+                    <th>
+                        <input class="btn btn-primary" value="Сохранить" type="submit">
+                        <input name="action" value="set-costs" type="hidden">
+                        <input name="id" value="<?=$edTpl->getId()?>" type="hidden">
+                    </th>                    
+                </tr>                
+            </table>                          
+            
+          </div>        
+    </div>

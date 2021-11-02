@@ -1,0 +1,72 @@
+div.fix-width {
+    padding: 0 !important;
+    display: inline-block;
+    width: 80px;
+}
+
+tr.group-heading > th {
+    vertical-align: top !important;
+}
+
+.table > tbody > tr > td.ticket-place {
+    font-size: 20px;
+    font-weight: bold;
+    color: slategray;
+}
+
+
+
+
+
+
+
+
+.dropdown-menu {
+ right:0  !important; 
+ left:auto !important;   
+}
+.dropdown-menu > li {
+    margin-bottom: 10px !important;
+}
+span.btn-xs {
+    line-height: 1 !important;
+    width: 25px !important;
+    height: 23px !important;
+    padding: 0;
+}
+span.pull-left {
+    margin-right: 5px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-left.btn-xs {
+    color: #fff;
+    text-align: center;
+}
+span.btn-xs span {
+    padding: 4px !important;
+}
+.menu-label {
+    margin-right: 20px;
+}
+span.btn-xs span.fa {
+    font-size: 16px;
+    vertical-align: middle;
+    top: -1px;
+}
+
+
+
+.ticket-sell-content .btn {
+    padding: 2px 5px;
+    font-size: 13px;
+}
+.ticket-sell-content .form-control {
+    padding: 5px;
+    font-size: 12px;
+    height: 26px;
+}
+
+.ticket-sell-content .cls-place {
+    padding-left: 9px;
+}

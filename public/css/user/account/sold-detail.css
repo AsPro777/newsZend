@@ -1,0 +1,33 @@
+#filter-form {
+    color: black;
+}
+#filter-form input {
+    text-align: center;
+    width: 100px;
+}
+#filter-form > span {    
+    color: white;
+}
+#filter-form > button {    
+    padding: 1px 5px 2px 5px;
+}
+
+tr.bold th {
+    font-weight: bolder;
+}
+
+td.top {
+    vertical-align: top !important;
+}
+
+tr.status-sold {
+    background-color: #c9fffa !important; 
+}
+
+tr.status-returned {
+    background-color: #ffeded !important; 
+}
+
+#filter-form button[type='submit'] {
+    margin-right: 50px;
+}

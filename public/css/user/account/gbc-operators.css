@@ -1,0 +1,145 @@
+form div.row {
+    padding-top: 5px;
+}
+form div.row-submit {
+    padding-top: 20px;
+}
+form div.input-group[class*="col-"] {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+input.btn.right {
+    float: right;
+    margin-left: 5px;
+}
+div.driver-form {
+    display: none;
+}
+
+span.pull-right {
+    margin-left: 5px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-right:hover {
+    cursor: pointer;
+    color: #007fff;
+}
+span.pull-right.btn-xs {
+    color: #fff;
+}
+span.pull-right i.fa {
+    padding-top: 3px;
+}
+.full-width-input {
+    width: calc( 100% - 2 * 60px );
+    line-height: normal;
+    font-size: 12px;
+    color: gray;
+    border: 1px solid #f5e5e5;
+    background-color: #f9f3f3;
+}
+input[type="checkbox"] {
+    border: white !important;
+}
+.table-condensed > tbody > tr > td, 
+.table-condensed > tbody > tr > th, 
+.table-condensed > tfoot > tr > td, 
+.table-condensed > tfoot > tr > th, 
+.table-condensed > thead > tr > td, 
+.table-condensed > thead > tr > th {    
+    font-size: 11px;
+}
+
+.btn-group-xs > .btn, .btn-xs {
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+td.type-checkbox {
+    text-align: center;
+    font-weight: bolder;
+    width: 50px
+}
+
+tr.group-heading th {
+    background-color: #f5f5f5;
+}
+
+td span.label {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+td.not-editable {
+    font-weight: bold;
+}
+td.editable, th.editable {
+    cursor: pointer;
+}
+td.editable:hover, th.editable:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+th.buttons {
+    min-width: 100px;
+}
+
+div.panel-heading button.btn.tab {
+    border: 1px #ac8888 solid;
+    color: #462828;    
+    padding: 0px 2px;
+    margin: 0 -1px;    
+    background: none;
+}
+
+/* шаблон */
+div.tpl > div.panel-heading {
+    padding: 5px;
+    font-size: unset;
+}
+
+div.tpl div {
+    line-height: 30px;
+}
+div.tpl input.form-control,
+div.tpl select.form-control
+{
+    height: auto;
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+div.tpl input[type="checkbox"] {
+    margin: 12px 0 0 5px;    
+}
+
+.with-checkbox {
+    padding: 5px;
+    margin: 5px;
+}
+td.right, th.right {
+    text-align: right;
+}
+.my-control {
+    display: initial;
+    min-width: 150px;
+    width: calc(100% - 82px) !important;    
+}
+
+.btn-my-control {
+    margin-left: 3px;
+    float: right;
+    width: 36px;
+    height: 33px;
+}
+.my-control-on-profile {
+    width: calc(100% - 72px) !important;    
+}
+
+.btn-my-control-on-profile {
+    width: 32px;
+    height: 29px;
+    margin-top: 5px;
+}

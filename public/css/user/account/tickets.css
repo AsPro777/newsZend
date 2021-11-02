@@ -1,0 +1,81 @@
+.add-ticket{
+    margin-top: 10px;
+}
+
+div.around-load-images-exist-ticket, div.around-load-images-new-ticket{
+    margin-bottom: 17px;
+}
+
+div.around-load-file{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+span.iconClose:before{
+     content: "\2715";
+     font-family: FontAwesome;
+     font-size: 10px;
+     cursor: pointer;
+     top: 8px;
+      right: 8px;
+}
+
+span[name^=add-file]{
+   padding: 3px; 
+   border-radius: 3px;
+   border: 1px solid #999;
+   display: inline-block;
+   margin: 5px;
+}
+
+div.new-ticket {
+    margin: 0;
+    display: none;
+}
+
+div.new-ticket div.panel-body > div > div {
+    margin-bottom: 10px;
+}
+
+span.author {
+    font-weight: bold;
+}
+
+span.label-bordered {
+    border: 1px #f3c4c4 solid !important;    
+    width: 100px;
+}
+
+span.label-black { 
+    background-color: black;
+}
+
+.media-heading .media-annotation,
+.position-right {
+    margin-left: 0 !important;
+}
+
+.media-body {
+    text-align: justify;
+}
+
+.media-image{
+    margin-top: 0px;
+    position: relative;
+}
+
+.content-divider {
+    text-align: left !important;
+}
+
+.content-divider > span {
+    padding-left: 0 !important;
+}
+
+.ticket-template, .head-template, .media-template, .divider-template {
+    display: none;    
+}
+
+.panel-heading {
+    padding: 5px 20px !important;
+}

@@ -1,0 +1,61 @@
+<?php
+$this->headTitle('Список пользователей');
+//$this->mainMenu()->setActiveItemId('dropdown-menu');
+?>
+
+<h1>Список пользователей</h1>
+
+<p>
+<a class="btn btn-default" href="
+    <?= $this->url('admin', ['action'=>'add']); ?>">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить
+</a>
+</p>
+
+<table class="table table-striped">
+
+   <tr>
+        <th>ID</th>
+        <th>E-mail</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Дата регистрации</th>
+        <th>Статус</th>        
+        <th>Действия</th>        
+    </tr>
+    
+    <?php foreach ($users as $user): ?>
+    <?php
+        $act = 'view';
+        if($user->getIdUsrType()->getId() == 3) $act = 'viewprv';
+    ?>
+    
+    <tr>
+        <td><?= $this->escapeHtml($user->getId()); ?></td>
+        <td>
+            <a href="<?= $this->url('admin', ['action'=>$act, 'id'=>$user->getId()]); ?>">
+                <?= $this->escapeHtml($user->getEmail()); ?>
+            </a> 
+        </td>
+        <td><?= $this->escapeHtml($user->getF()); ?></a></td>
+        <td><?= $this->escapeHtml($user->getI()); ?></a></td>
+        <td><?= $this->escapeHtml($user->getO()); ?></a></td>
+        <td><?= $user->getDateCreatedAsString(); ?></td>        
+        <td><?= $this->escapeHtml($user->getStatusAsString()); ?></td>
+        <td>
+            <a class="btn btn-info" href="<?= $this->url('admin', 
+                    ['action'=>'edit', 'id'=>$user->getId()]); ?>">
+                <span class="glyphicon glyphicon-pencil" ></span> Изменить
+            </a>
+            <a class="btn btn-default" href="<?= $this->url('admin',
+                    ['action'=>'change-password', 'id'=>$user->getId()]); ?>">
+                <span class="glyphicon glyphicon-asterisk"></span> Сменить пароль
+            </a>
+        </td>    
+    </tr>
+        
+    <?php endforeach; ?>   
+    
+</table>
+

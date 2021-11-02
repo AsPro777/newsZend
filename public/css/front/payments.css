@@ -1,0 +1,8 @@
+.payment-cards img {
+    height: 32px;
+    padding-right: 5px;
+    padding-top: 7px;
+}
+.payment-cards img:hover {
+    opacity: 0.7;
+}

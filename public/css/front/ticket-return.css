@@ -1,0 +1,22 @@
+#ticket-return-form input {
+    height: auto !important;
+    padding-left: 3px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-transform: none;
+    border: 1px solid #444;
+}
+
+#ticket-return-form input[type=submit] {
+    background-color: #009240;    
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 12px 33px;
+}
+
+.ticket-return-h4:important{
+    font-size: 18px;
+    line-height: 18px;
+}

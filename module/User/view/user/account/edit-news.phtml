@@ -1,0 +1,125 @@
+<?php
+
+$title = "Редактирование новости";
+$this->headTitle($title);
+$this->partial('/user/account/partial/script-and-style');
+$this->headLink()->appendStylesheet($this->basePath('css/user/account/news.css'.'?'.random_int(11111, 99999)));
+?>
+
+<div class=singleNewsContent>
+   <div class=viewNews>
+      <h1 class="singleNewsHead">
+         <?=$this->escapeHtml($result->getHead())?>
+      </h1>
+
+      <?php
+       $pic=json_decode($result->getAddFiles());
+       if(isset($pic->mainPic[0])):?>
+       <p class="singleNewsMainPic" ><img src='/account/editNews/<?=$result->getId()?>?resize=yes&name=<?=$pic->mainPic[0]->name?>&selectPic=true&newWidth=350&newHeight=150'><span class="iconClose"></span></p>
+       <?php else:?>
+       <p class="singleNewsMainPic" ><img src="/img/about.jpg" width="350" height="150"><span class="iconClose"></span></p>
+     <?php endif;?>
+
+     <?php
+       $aText=explode(' ',$result->getText());
+       $newText=''; /*после каждого встреченого тега img будем ставить <span class IconClose>*/
+                                        for($i=0;$i<count($aText);$i++){
+                                            /*if($aText[$i]=='<img'){*/
+                                              $pos=strpos($aText[$i],'<img');
+                                              if($pos!==FALSE){
+                                                $spanImg='<div id="deleteImg">'.$aText[$i];
+                                                for($j=$i+1;$j<count($aText);$j++){
+                                                    $pos=strpos($aText[$j],'>');
+                                                    if($pos!==false)
+                                                    {
+                                                        $aText[$j]= str_replace('>','><span class="iconClose"></span></div>',$aText[$j]);
+                                                        $spanImg=$spanImg.' '.$aText[$j];
+                                                        break;
+                                                    }
+                                                    $spanImg=$spanImg.' '.$aText[$j];
+                                                }
+                                                $newText=$newText.' '.$spanImg;
+                                                $spanImg='';
+                                                $i=$j+1;
+                                            }
+                                            if($i<count($aText)) $newText=$newText.' '.$aText[$i];
+                                        }
+     ?>
+     <div class="singleNewsText">
+       <?=$newText?>
+     </div>
+
+     <?php
+         $date_reg = "";
+         $date_reg = $result->getDateReg();
+         $date_reg = explode(' ', $date_reg);
+
+         $newsType='Новость-';
+          if($result->getPublic()==true) $newsType=$newsType.' для паблика ';
+          if($result->getInside()==true) $newsType=$newsType.' внутренняя';
+          if($result->getCarrier()==true) $newsType=$newsType.' для перевозчика';
+          if($result->getPassenger()==true) $newsType=$newsType.' для пользователя';
+          if($result->getTerminal()==true) $newsType=$newsType.' для вокзалов';
+          if($result->getPersonal()==true) $newsType=$newsType.' персональная';
+     ?>
+     <ul class="media-list chat-stacked content-group dateNews">
+        <li class="media date-step content-divider text-muted">
+           <span>
+              <i class="icon-calendar2 position-right text-muted"></i>
+                 <?=$date_reg[0]?> <?=$newsType?>
+           </span>
+        </li>
+    </ul>
+   </div>
+
+   <form class='panel-body'>
+     <div class="col-md-2">Заголовок</div>
+        <div class="col-md-10">
+            <input class="form-control edit-news" id="edit-head-news" name="editHeadNews" type="text" value="<?=$result->getHead()?>">
+        </div>
+        <div class="col-md-2">Обращение</div>
+           <div class="load-buttons">
+               <div class="load-file">
+                   <label id="load-edit-images" class="btn bg-teal-400 btn-labeled btn-labeled-right">
+                      <b><i class="icon-add"></i></b>Загрузить изображения
+                   </label>
+               </div>
+               <div class="load-main-pic">
+                  <label id="load-edit-main-img" class="btn bg-teal-400 btn-labeled btn-labeled-right">
+                     <b><i class="icon-add"></i></b>Загрузить тему
+                  </label>
+               </div>
+           </div>
+           <?php   $resultText=trim($result->getText());?>
+           <div class="col-md-10 edit-news textNews">
+              <textarea id="edit-text-news" class="form-control edit-news" name="editTextNews" rows=6>
+<?=$resultText?>
+              </textarea>
+           </div>
+
+              <div class="col-md-2">Дата создания</div>
+              <div class="col-md-10">
+                 <input class="form-control edit-news" id="edit-date-news" name="editDateNews" type="text" value=<?=$result->getDateReg()?>>
+              </div>
+
+    </form>
+
+    <div class="edit-buttons">
+
+        <label id="public-button" class="btn bg-teal-400 btn-labeled btn-labeled-right public-button">
+            Опубликовать
+        </label>
+        <input id="submitRefreshButton" class="btn btn-primary btn-sm" value="Обновить" type="button">
+        <label id="exit-button" class="btn bg-teal-400 btn-labeled btn-labeled-right close-button">
+            Закрыть
+        </label>
+    </div>
+</div>
+
+<?php
+echo <<<JS
+         <script type="text/javascript">
+             var ajax_action='$action';
+         </script>
+JS;
+?>

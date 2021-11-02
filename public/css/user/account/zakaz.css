@@ -1,0 +1,101 @@
+fieldset div.row {
+    padding-top: 5px;    
+}
+
+fieldset div.stepy-navigator {
+    padding-top: 15px;    
+}
+
+input.width-dt {
+    width: 100px;
+    float: left;
+    margin-right: 5px;
+}
+
+input.width-tm {
+    width: 70px;
+    float: left;
+    margin-right: 5px;
+}
+
+.form-group {
+    margin-bottom: 5px !important;
+}
+
+.universal-closer {
+	float: right;
+	margin: -40px -5px;
+	cursor: pointer;
+	padding: 0;
+	background: 0 0;
+	border: 0;
+	font-size: 34px;
+	font-weight: lighter;
+}
+
+.dropdown-menu {
+ right:0  !important; 
+ left:auto !important;   
+}
+span.btn-xs {
+    line-height: 1 !important;
+    width: 25px !important;
+    height: 23px !important;
+    padding: 0;
+}
+span.pull-left {
+    margin-right: 5px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-left.btn-xs {
+    color: #fff;
+    text-align: center;
+}
+span.btn-xs span {
+    padding: 4px !important;
+}
+.menu-label {
+    margin-right: 20px;
+}
+span.btn-xs span.fa {
+    font-size: 16px;
+    vertical-align: middle;
+    top: -1px;
+}
+.chartered-reis-event {
+    color: darkolivegreen;
+}
+.width-230 {
+	width: 230px;
+	display: inline-block;
+}
+
+#modal-reis-pax tbody#paxes-body td span {
+    display: inline-block;
+}
+#modal-reis-pax tbody#paxes-body td {
+    vertical-align: top;
+}
+#modal-reis-pax div.heading-btn-group {
+    float: right;
+    margin-top: -56px;
+    margin-right: -10px;
+    width: 920px;
+}
+#modal-reis-pax button.btn.dropdown-toggle {
+    min-width:200px;
+}
+#modal-reis-pax div.btn-group {
+    margin-right: 10px; 
+    top: 17px;
+}
+#modal-reis-pax ul.dropdown-menu {
+    max-height: 300px; 
+    overflow-y: auto;    
+}
+#modal-reis-pax #all_checkboxes {
+    cursor: pointer;
+    font-weight: bolder;
+    text-align: left;
+}

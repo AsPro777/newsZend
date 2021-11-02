@@ -1,0 +1,131 @@
+/* Радиокнопки на панели */
+.radio-inline {
+    font-size:13px;
+}
+.heading-btn-group .radio .choice, .heading-btn-group .radio-inline .choice {    
+    position: relative; 
+    width: 100%;
+    top: -3px;
+}
+.heading-btn-group .radio-inline, .heading-btn-group .checkbox-inline {	
+    padding-left: 5px;
+}
+.heading-btn-group .radio-inline + .radio-inline, .heading-btn-group .checkbox-inline + .checkbox-inline {
+    margin-left: 0;
+}
+/* календарь */
+.heading-btn-group input.form-control {
+    cursor: pointer;    
+    text-align: center;
+}
+.heading-elements .heading-btn-group .input-group {
+    min-width: 170px;
+    max-width: 170px;
+    float: left;
+}
+.filter span.input-group-addon.dt-step {
+    cursor: pointer;
+}
+
+/* div c компонентами фильтрации */
+.heading-btn-group .filter {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 30px;  
+    font-size: 13px;
+} 
+
+/* Запрет переносоа строки в th */
+.nowrap {
+    white-space: nowrap;
+}
+
+/* Фиксация ширины span */
+span.fixed-70 {
+    min-width: 70px;
+    display: inline-block;
+}
+span.fixed-85 {
+    min-width: 85px;
+    display: inline-block;
+}
+
+
+span.pull-right {
+    margin-left: 15px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-right:hover {
+    cursor: pointer;
+    color: #007fff;
+}
+span.pull-right.btn-xs {
+    color: #fff;
+}
+span.pull-right i.fa {
+    padding-top: 3px;
+}
+
+tr.group-heading > th {
+	vertical-align: top !important;
+}
+
+span.success {
+    background-color: darkseagreen;
+    padding: 2px 0;
+    border-radius: 3px;
+}
+span.error {
+    background-color: antiquewhite;
+    padding: 2px 0;
+    border-radius: 3px;
+}
+
+
+.picker {
+    min-width: 270px;
+}
+input.form-control.picker__input {
+    padding: 0;
+}
+
+
+#points-table-body td {
+    text-align: left;
+}
+th.mark_response {
+    text-align: center;
+}
+
+#value_bar {
+    width: 10%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;  
+    line-height: 30px;  
+    color: white;
+}
+
+div#content_device
+{
+    text-align: center;
+    font-size: 20px;
+}
+td.date_response
+{
+    text-align: left;
+    width: 150px;
+}
+
+td.device_response,
+div#content,
+th.mark_response
+{
+    width: 100px;
+}
+td.button_response
+{
+    width: 150px;
+}

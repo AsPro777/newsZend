@@ -1,0 +1,29 @@
+<?php
+
+    // код сессии для проверки в checkActivity()
+    $this->headScript()->prependScript("var sid = '". session_id()."';");
+
+    if(!empty($action))
+    {
+        $this->headScript()->prependScript("var ajax_action = '$action';");
+        $this->headScript()->prependScript("var is_post = ". (sizeof($_POST)? 'true' : 'false').";");
+        $this->headScript()->prependScript("var success_post = ". ( (sizeof($_POST) && !$errorMessage) ? 'true' : 'false').";");
+
+        $cssFile = $this->basePath('css/user/account/'.$action.'.css');
+        if( file_exists($_SERVER["DOCUMENT_ROOT"].$cssFile) )
+            $this->headLink()->appendStylesheet($cssFile.'?'.random_int(11111, 99999));
+
+        $jsFile = $this->basePath('js/user/account/'.$action.'.js');
+        if( file_exists($_SERVER["DOCUMENT_ROOT"].$jsFile) )
+            $this->headScript()->appendFile($jsFile.'?'.random_int(11111, 99999));  
+
+        $this->headScript()->appendScript("var issa = ".((isset($user) && \User\Service\AccessChecker::isSA($user))?"true":"false").";");
+    }
+    else
+        $this->headScript()->prependScript("var ajax_action = 'dummy-ajax-action';");
+
+
+    if(isset($user) && \User\Service\AccessChecker::isSA($user))
+        $this->headScript()->appendFile($this->basePath('js/utils_adm.js'));
+
+?>

@@ -1,0 +1,109 @@
+.div-user-response
+{
+    width: 100% !important;
+}
+
+h2 {
+    font-size: 24px !important;
+    line-height: 24px !important;
+    font-weight: normal !important;
+}
+.offset-header {
+    margin-left: 30px;
+}
+
+div#content
+{
+    text-align: left;
+}
+
+div#content_device
+{
+    text-align: center;
+}
+
+table.table-xxs th.date_response, th.mark_response, th.comment_response
+{
+    text-align: left;
+}
+
+table.table-xxs th.device_response
+{
+    text-align: center;
+}
+
+i.device
+{
+    font-size: 0px;
+}
+
+span.delete
+{
+   position: relative;
+   right: -10px;
+   display: inline-block;
+   cursor: pointer;
+}
+
+div.comment
+{
+    padding-right: 30px;
+}
+
+
+i.fa-minus-circle
+{
+    color: whitesmoke;
+}
+
+.widget-response
+{
+  border-bottom: 1px solid gray;
+  padding: 0 0 10px;
+  font-size: 17px;
+}
+
+.widget-question
+{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.user-radiobutton > label
+{
+   display: inline-block;
+   margin-bottom: 5px;
+   margin-right: 20px;
+   font-weight: normal;
+}
+
+.user-radiobutton > label > input[type="radio"]
+{
+    margin-right: 5px;
+}
+
+.textarea-response
+{
+   width: 100%;
+   height: 200px;
+   color: black;
+}
+
+div.divSubmit
+{
+   height: 40px;
+}
+
+input.reverse-button
+{
+   background-color: #009240;
+   height: 100%;
+   width: 120px;
+   position: relative;
+   left: calc(50% - 60px);
+   font-weight: bold;
+   font-family: arial;
+   font-size: 16px;
+   border: 1px solid #009240;
+   border-radius: 40px;
+}

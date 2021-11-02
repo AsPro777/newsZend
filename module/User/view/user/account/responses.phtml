@@ -1,0 +1,151 @@
+<?php
+
+$title = "Отзывы пользователей";
+$this->headTitle($title);
+$this->partial('/user/account/partial/script-and-style');/*частичное представление*/
+
+$this->headScript()
+            ->prependFile($this->basePath('js/plugins/forms/styling/uniform.min.js'))
+        ;
+/*файл responses.js подключается в частичном представлении /user/account/partial/script-and-style*/
+//$this->headLink()->appendStylesheet($this->basePath('css/front/user-ticket-response.css'.'?'.random_int(11111, 99999)));
+//$this->headLink()->appendStylesheet($this->basePath('css/user/account/online-returns.css'.'?'.random_int(11111, 99999)));
+
+
+$this->headScript()
+    ->appendScript(<<<S
+
+    var filter_dt = '{$filter["dt"]}';
+    var button_flag = '$flag';
+S
+);
+?>
+
+<!-- Page header -->
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><i class="fa fa-user-circle-o position-left"></i> <?=$title?></h4>
+            <div class="heading-elements">
+                <div class="heading-btn-group">
+                        <form id="filter-form" method="post">
+                            <div class="filter" id="responses">
+                                <div class="input-group">
+                                    <span class="input-group-addon dt-step" data-increment="-1"><i class="icon-backward2"></i></span>
+                                  <!--  <input id="datepicker" class="datepicker" type="text">-->
+                                    <input id="picker_events" placeholder="дд.мм.гг" type="text" name="dt" class="form-control" value="<?=$this->escapeHtml(isset($filter["dt"])?$filter["dt"]:"")?>">
+                                    <span class="input-group-addon dt-step" data-increment="1"><i class="icon-forward3"></i></span>
+                                </div>
+                                   <label class="radio-inline"><input name="accepted" class="styled" <?=(($radioId=="all")?"checked=checked":"")?>  type="radio" value="all">Все</label>
+                                   <label class="radio-inline"><input name="accepted" class="styled" <?=(($radioId=="default"||$radioId=="nonReaded")?"checked=checked":"")?>  type="radio" value="nonReaded">Непрочитанные</label>
+                                   <label class="radio-inline"><input name="accepted" class="styled" <?=(($radioId=="readed")?"checked=checked":"")?> type="radio"  value="readed">Прочитанные</label>
+                                   <label class="radio-inline"><input name="accepted" class="styled" <?=(($radioId=="deleted")?"checked=checked":"")?> type="radio"  value="deleted">Удаленные записи</label>
+                                   <a href="#" class="btn btn-link btn-float has-text btn-reset"><i class="icon-reset text-teal-300"></i><span>Обновить</span></a>
+                                   <a href="#" class="btn btn-link btn-float has-text btn-sms"><i class="icon-circle-left2 text-teal-300"></i><span>SMS</span></a>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+
+<?=$this->partial('/user/account/partial/message', ['errorMessage'=>$errorMessage])?>
+
+<!-- Content area -->
+<div class="content">
+
+      <!-- Table -->
+      <table class="table table-striped table-hover table-framed table-xxs">
+        <thead>
+            <tr>
+                <th class="date_response">  Дата регистрации  </th>
+                <th class="device_response">  Устройство  </th>
+                <th class="mark_response">  Оценка </th>
+                <th class="comment_response">  Комментарий </th>
+                <th>   </th>
+            </tr>
+        </thead>
+        <tbody id="points-table-body">
+        <? if(sizeof($responses)==0) : ?>
+          <tr>
+             <td colspan="6">Список пуст</td>
+          </tr>
+        <? endif; ?>
+
+        <? foreach($responses as $res) : ?>
+          <?
+             $dateReg=$res->getDateReg();
+             $date = new DateTime($dateReg);
+             $resp=json_decode($res->getData());
+
+             switch(@$resp->device){
+                case 'Компьютер': $deviceClass =  "fa fa-desktop"; break;
+                case 'Ноутбук': $deviceClass =  "fa fa-laptop"; break;
+                case 'Смартфон': $deviceClass =  "fa fa-mobile"; break;
+                case 'Касса': $deviceClass = "fa fa-user"; break;
+                default: $deviceClass =  "неизвестно";
+            }
+
+            switch(@$resp->mark){
+                case '5': $width=100; break;
+                case '4': $width=80; break;
+                case '3': $width=50; break;
+                case '2': $width=40; break;
+                case '1': $width=20; break;
+                default: $width=0;
+            }
+
+          ?>
+               <tr class="group-heading" data-id="<?=$res->getId()?>">
+                 <td class="date_response">
+                   <div id="content">
+                      <?=date_format($date, 'd.m.Y H:i'); ?>
+                   </div>
+                 </td>
+                 <td class="device_response">
+                     <div id="content_device" title="<?=$resp->device?>">
+                       <i class="device <?=$deviceClass;?>"><div></div></i>
+                   </div>
+                 </td>
+                 <td class="mark_response">
+                   <div id="content">
+                    <div id="value_bar" style="width: <?=$width;?>%"><?=@$resp->mark;?></div>
+                   </div>
+                 </td>
+                 <td class="comment_response">
+                   <div id="comment">
+                     <?=@$resp->remark;?>
+                   </div>
+                 </td>
+                 <td class="button_response">
+
+                   <?if($res->getDeleted()!=true):?>
+                    <span class="btn-xs btn-warning pull-right delete" title="Удалить">
+                     <span class="glyphicon glyphicon-trash"></span>
+                   </span>
+                   <?endif?>
+
+                   <?if($res->getReaded()!=true): ?>
+                     <span class="btn-xs btn-info pull-right read" title="Отметить как 'Прочитано'">
+                      <span class="glyphicon glyphicon-eye-open"></span>
+                     </span>
+                   <?endif; ?>
+                 </td>
+               </tr>
+           <?endforeach;?>
+        </tbody>
+        <footer>
+          <tr>
+             <th colspan="6">
+                <ul class="pager">
+                  <li><a id="next-page" href="#" data-page="0">Следующие <?=$page_size?></a></li>
+                </ul>
+             </th>
+          </tr>
+        </footer>
+      </table>
+
+</div>
+

@@ -1,0 +1,60 @@
+<?php
+
+$title = "Новости";
+$this->headTitle($title);
+$this->partial('/user/account/partial/script-and-style');
+$this->headLink()->appendStylesheet($this->basePath('css/user/account/news.css'.'?'.random_int(11111, 99999)));
+?>
+
+<div class="singleNewsContent">
+    <?=$this->partial('/user/account/partial/message', ['successMessage'=>$successMessage, 'errorMessage'=>$errorMessage])?>
+    <h1 class="singleNewsHead">
+        <?=$this->escapeHtml($result->getHead())?>
+    </h1>
+    <ul class="pager back-page">
+        <li>
+           <a id='back-page' href="/account/news" > К списку новостей</a>
+        </li>
+    </ul>
+
+    <?php
+    /*var_dump($result->getAddFiles());*/
+      $pic=json_decode($result->getAddFiles());
+      if(isset($pic->mainPic[0])):?>
+      <p class="singleNewsMainPic" ><img src='/account/singleNews/<?=$result->getId()?>?resize=yes&name=<?=$pic->mainPic[0]->name?>&selectPic=true&newWidth=450&newHeight=250'></p>
+      <?php else:?>
+      <p class="singleNewsMainPic" ><img src="/img/about.jpg" width="450" height="250"></p>
+    <?php endif;?>
+
+      <div class="singleNewsText">
+          <?=$result->getText()?>
+      </div>
+
+      <?php
+         $date_reg = "";
+         $date_reg = $result->getDateReg();
+         $date_reg = explode(' ', $date_reg);
+      ?>
+      <ul class="media-list chat-stacked content-group dateNews">
+          <li class="media date-step content-divider text-muted">
+              <span>
+                  <i class="icon-calendar2 position-right text-muted"></i>
+                  <?=$date_reg[0]?>
+              </span>
+          </li>
+      </ul>
+
+      <ul class="pager">
+        <?php if($prev!==''):?>
+          <li>
+              <a id='next-news' href="/account/singleNews/<?=$prev?>" > Предыдущая новость</a>
+          </li>
+        <?php endif;?>
+        <?php if($next!==''):?>
+          <li>
+              <a id='prev-news' href="/account/singleNews/<?=$next?>" > Следующая новость</a>
+          </li>
+        <?php endif;?>
+      </ul>
+
+</div>

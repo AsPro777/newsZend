@@ -1,0 +1,87 @@
+#edit {
+    display: none;
+}
+
+div.form-row {
+    padding-top: 5px;    
+}
+
+input.width-cost {
+    width: 60px;
+    text-align: center;    
+}
+input.city-selector {
+    width: 350px;    
+}
+
+#points-table-body > tr > td {
+    vertical-align: top;
+}
+
+#points-table-body li {
+    list-style-type: none;     
+    cursor: pointer;
+}
+#points-table-body li.success {
+    color: green; 
+}
+#points-table-body li.warning {
+    color: orangered; 
+}
+
+
+
+
+fieldset div.row {
+    padding-top: 5px;    
+}
+
+fieldset div.stepy-navigator {
+    padding-top: 15px;    
+}
+
+.form-group {
+    margin-bottom: 5px !important;
+}
+
+.universal-closer {
+	float: right;
+	margin: -40px -5px;
+	cursor: pointer;
+	padding: 0;
+	background: 0 0;
+	border: 0;
+	font-size: 34px;
+	font-weight: lighter;
+}
+
+.dropdown-menu {
+ right:0  !important; 
+ left:auto !important;   
+}
+span.btn-xs {
+    line-height: 1 !important;
+    width: 25px !important;
+    height: 23px !important;
+    padding: 0;
+}
+span.pull-left {
+    margin-right: 5px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-left.btn-xs {
+    color: #fff;
+    text-align: center;
+}
+span.btn-xs span {
+    padding: 4px !important;
+}
+.menu-label {
+    margin-right: 20px;
+}
+span.btn-xs span.fa {
+    font-size: 16px;
+    vertical-align: middle;
+    top: -1px;
+}

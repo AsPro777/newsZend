@@ -1,0 +1,65 @@
+<?php
+$title = "Кабинет администратора";
+$this->headTitle($title);
+//$this->mainMenu()->setActiveItemId('admin_home');
+$rowClass = "col-xs-12 col-sm-6 col-md-4 col-lg-3";
+?>
+<h1><?=$title?></h1>
+
+
+<div class="row placeholders">
+    <div class="<?=$rowClass?>">
+        <div class="panel">
+          <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-4 col-sm-4"><i class="fa fa-id-card fa-3x"></i></div>
+                <div class="col-xs-8 col-sm-8"><h4>Реквизиты</h4></div>                    
+              </div>
+          </div>
+          <div class="panel-body">
+            <i class="fa fa-address-book fa-1x"></i>&nbsp;&nbsp;<a href="/admin/settings">Учетные данные</a> <br>
+            <i class="fa fa-key fa-1x"></i>&nbsp;&nbsp;<a href="/users/change-password">Смена пароля</a>
+          </div>
+          <div class="panel-footer">Здесь что-нибудь написать?</div>
+        </div>
+        <div class="clearfix visible-xs"></div>
+    </div>
+     
+    <div class="<?=$rowClass?>">
+        <div class="panel">
+          <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-4 col-sm-4"><i class="fa fa-users fa-3x"></i></div>
+                <div class="col-xs-8 col-sm-8"><h4>Учетные данные</h4></div>
+              </div>
+          </div>
+          <div class="panel-body">
+            <i class="fa fa-user-circle fa-1x"></i>&nbsp;&nbsp;<a href="/admin/users">Пользователи</a> <br>
+            <i class="fa fa-briefcase fa-1x"></i>&nbsp;&nbsp;<a href="/admin/moder">На модерации</a>
+          </div>
+          <div class="panel-footer">Здесь что-нибудь написать?</div>
+        </div>
+        <div class="clearfix visible-xs"></div>
+    </div>
+     
+     
+    <div class="<?=$rowClass?>">
+        <div class="panel">
+          <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-4 col-sm-4"><i class="fa fa-book fa-3x"></i></div>
+                <div class="col-xs-8 col-sm-8"><h4>Справочники</h4></div>                    
+              </div>
+          </div>
+          <div class="panel-body">
+            <i class="fa fa-bus fa-1x"></i>&nbsp;&nbsp;<a href="/admin/citys">Города</a> <br>
+          </div>
+          <div class="panel-footer">Здесь что-нибудь написать?</div>
+        </div>
+        <div class="clearfix visible-xs"></div>
+    </div>
+     
+     
+</div>
+
+

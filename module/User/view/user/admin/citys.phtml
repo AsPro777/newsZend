@@ -1,0 +1,394 @@
+<?php
+$title = "Города";
+$this->headTitle($title);
+//$this->mainMenu()->setActiveItemId('dropdown-menu');
+
+//$this->headLink()
+//      ->prependStylesheet($this->basePath('css/jquery-ui.css'))
+//        ;
+
+//$this->headScript()
+//            ->prependFile($this->basePath('js/jquery-ui.js'))
+//        ;
+?>
+
+<div class="panel">
+    <div class="panel-heading"><h3><?=$title?></h3> </div>
+  <!-- Table -->
+<table class="table">
+  <tr>
+      <th colspan=2>Округа</th>
+      <th>&nbsp;</th>
+      <th colspan=2>Регионы</th>
+      <th>&nbsp;</th>
+      <th colspan=2>Города</th>
+      <th></th>
+  </tr>    
+  <tr>
+      <th>
+        <div class="btn-group-vertical input-group-sm filter okrug">
+            <button type="button" class="btn btn-default btn-sm" name="okrug"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+      </th>
+      <th>
+        <div class="input-group input-group-sm filter okrug">
+            <input type="text" class="form-control form-control-sm" name="okrug">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+        </div>
+      </th>
+      <th>&nbsp;</th>
+      <th>
+        <div class="btn-group-vertical input-group-sm filter region">
+            <button type="button" class="btn btn-default btn-sm" name="region"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+      </th>
+      <th>
+        <div class="input-group input-group-sm filter region">
+            <input type="text" class="form-control form-control-sm" name="region">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+        </div>
+      </th>
+      <th>&nbsp;</th>
+      <th>
+        <div class="btn-group-vertical input-group-sm filter city">
+            <button type="button" class="btn btn-default btn-sm" name="city"><span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+      </th>
+      <th>
+        <div class="input-group input-group-sm filter city">
+            <input type="text" class="form-control form-control-sm" name="city">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+        </div>
+      </th>
+      <th></th>
+  </tr>    
+  
+  
+  
+  <tr>
+      <td>
+      <div class="btn-group-vertical btn-group-xs" id="div-okrugs-addon">          
+      <?php foreach ($okrugs as $okrug): ?>              
+        <button type="button" class="btn btn-default btn-okrug-addon" name="<?=$okrug->getId()?>"><span class="glyphicon glyphicon-edit"></span> </button>
+      <?php endforeach;?>    
+      </div>
+      </td>
+      <td>
+      <div class="btn-group-vertical btn-group-xs" id="div-okrugs">
+      <?php foreach ($okrugs as $okrug): ?>              
+        <button type="button" class="btn btn-default btn-okrug" name="<?=$okrug->getId()?>"><?=$okrug->getName()?></button>
+      <?php endforeach;?>    
+      </div>
+      </td>
+      <td>&nbsp;</td>
+      <td><div class="btn-group-vertical btn-group-xs" id="div-regions-addon"></div></td>
+      <td><div class="btn-group-vertical btn-group-xs" id="div-regions"></div></td>
+      <td>&nbsp;</td>
+      <td><div class="btn-group-vertical btn-group-xs" id="div-citys-addon"></div></td>
+      <td><div class="btn-group-vertical btn-group-xs" id="div-citys"></div></td>
+      <td width="80%">&nbsp;</td>
+  </tr>    
+</table>      
+</div>
+
+<div class="modal fade modal-window" id="modal-window" tabindex="-1" role="dialog" aria-labelledby="modal-window-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="modal-window-label">Редактирование</h4>
+      </div>
+      <div class="modal-body">
+        
+        <div class="alert alert-danger fade in">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <strong>Нельзя сохранить!</strong> Необходимо ввести наименование!
+        </div>
+          
+        <form method="post" id="edit-city-form">        
+            
+        <div class="form-group okrug">
+            <label>Округ</label>
+            <input name="name_okrug" class="form-control" placeholder="Введите наименование" value="">                              
+        </div>       
+        <div class="form-group region">
+            <label>Регион</label>
+            <input name="name_region" class="form-control" placeholder="Введите наименование" value="">                              
+        </div>       
+        <div class="form-group city">
+            <label>Город</label>
+            <input name="name_city" class="form-control" placeholder="Введите наименование" value="">                              
+        </div>       
+        
+        <input name="id_okrug" value="0" type="hidden">
+        <input name="id_region" value="0" type="hidden">
+        <input name="id_city" value="0" type="hidden">
+        <input name="type" value="" type="hidden">
+        </form>    
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary" id="btn-submit-modal">Сохранить изменения</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $(".filter.city, .filter.region").hide();
+    
+    $("div.filter input").on("keyup", function() {        
+        typ = $(this).attr("name");
+        switch(typ) {
+            case "okrug" : $(".filter.region, .filter.city").hide();
+                           $("#div-regions, #div-regions-addon, #div-citys, #div-citys-addon").empty(); 
+                           break;
+                           
+            case "region": $(".filter.city").hide();
+                           $("#div-citys, #div-citys-addon").empty(); 
+                           break;
+        }
+        
+        $.ajax({
+                url: '/admin/citys',
+                type: 'post',
+                dataType: "json",
+                data: {
+                  is_filter: true,  
+                  filter: $(this).val(),
+                  id_region: $("#div-regions button.active").attr("name"),
+                  id_okrug: $("#div-okrugs button.active").attr("name"),
+                  type: typ
+                },
+                success: function( data ) {
+                  switch(typ){
+                      case "okrug": return fillColumn(typ, data, function() {
+                                        toggleActive(this);
+                                        $( "div#div-regions, div#div-regions-addon, div#div-citys, div#div-citys-addon" ).empty().hide();
+                                        $(".filter.city, .filter.region").hide();
+                                        $.ajax({
+                                                url: '/ajax/regions-in-okrug-list',
+                                                type: 'post',
+                                                dataType: "json",
+                                                data: {
+                                                  id_okrug: $(this).attr("name")
+                                                },
+                                                success: function( data ) {                                                      
+                                                    fillColumn("region", data, function() 
+                                                    {
+                                                        toggleActive(this);
+                                                        $( "div#div-citys, div#div-citys-addon" ).empty().hide();
+                                                        $(".filter.city").hide();
+                                                        $.ajax({
+                                                                url: '/ajax/citys-in-region-list',
+                                                                type: 'post',
+                                                                dataType: "json",
+                                                                data: {
+                                                                  id_region: $(this).attr("name")
+                                                                },
+                                                                success: function( data ) {                                                      
+                                                                    fillColumn("city", data, function(){
+                                                                        toggleActive(this);
+                                                                    });
+                                                                }, // success
+                                                            });//$.ajax    
+                                                    });
+                                                }, // success
+                                            });//$.ajax    
+                              });
+                      case "region": return fillColumn(typ, data, function() 
+                                                    {
+                                                        toggleActive(this);
+                                                        $( "div#div-citys, div#div-citys-addon" ).empty().hide();
+                                                        $(".filter.city").hide();
+                                                        $.ajax({
+                                                                url: '/ajax/citys-in-region-list',
+                                                                type: 'post',
+                                                                dataType: "json",
+                                                                data: {
+                                                                  id_region: $(this).attr("name")
+                                                                },
+                                                                success: function( data ) {                                                      
+                                                                    fillColumn("city", data, function(){
+                                                                        toggleActive(this);
+                                                                    });
+                                                                }, // success
+                                                            });//$.ajax    
+                                                    });
+                     case "city": return fillColumn(typ, data, function() 
+                                                    {
+                                                        toggleActive(this);
+                                                    });
+                  }  
+                },
+            });//$.ajax
+    });
+
+
+
+    $("div.filter button").on("click", function(){
+        editModal( $(this).attr("name"), 0, "Добавить новый");
+    })
+
+    $('#edit-city-form').on("submit", function(){
+        var w = $('.modal-window');
+        var type = w.find("input[name='type']").val();
+        if(w.find("input[name='name_"+type+"']").val() == "")
+        {        
+            w.find("div.alert").show(500);
+            return false;
+        }
+        return true;
+    });
+
+    $("#btn-submit-modal").on("click", function(){
+        $('#edit-city-form').submit();
+    })
+     
+     
+     
+     
+      
+    $("table.table div.btn-group-vertical button.btn-okrug-addon")
+        .css({"margin-top":"2px", "text-align":"left"})
+        .on("click", function(){
+            editModal("okrug", $(this).attr("name"), $("#div-okrugs button[name='"+$(this).attr("name")+"']").text()
+        )});
+
+        $("table.table div.btn-group-vertical button.btn-okrug")
+        .css({"margin-top":"2px", "text-align":"left"})
+        .on("click", function() {
+                toggleActive(this);
+                $( "div#div-regions, div#div-regions-addon, div#div-citys, div#div-citys-addon" ).empty().hide();
+                $(".filter.city, .filter.region").hide();
+                $.ajax({
+                        url: '/ajax/regions-in-okrug-list',
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                          id_okrug: $(this).attr("name")
+                        },
+                        success: function( data ) {                                                      
+                            fillColumn("region", data, function() 
+                            {
+                                toggleActive(this);
+                                $( "div#div-citys, div#div-citys-addon" ).empty().hide();
+                                $(".filter.city").hide();
+                                $.ajax({
+                                        url: '/ajax/citys-in-region-list',
+                                        type: 'post',
+                                        dataType: "json",
+                                        data: {
+                                          id_region: $(this).attr("name")
+                                        },
+                                        success: function( data ) {                                                      
+                                            fillColumn("city", data, function(){
+                                                toggleActive(this);
+                                            });
+                                        }, // success
+                                    });//$.ajax    
+                            });
+                        }, // success
+                    });//$.ajax    
+      })
+  })
+  
+</script>
+
+<script>
+    
+function fillColumn(type, data, callback)
+{
+    var container = $( "div#div-"+type+"s-addon" );
+    container.empty();
+    $.each(data, function(i,v){
+          container.append( 
+                  $('<button type="button" class="btn btn-default btn-'+type+'s-addon"><span class="glyphicon glyphicon-edit"></span> </button>')
+                  .css({"margin-top":"2px", "text-align":"left"})
+                  .attr("name", v.id)
+                  .on("click", function(){editModal(type, v.id, v.value)})
+          )});
+    container.show(500);
+
+    container = $( "div#div-"+type+"s" );
+    container.empty();
+    $.each(data, function(i,v){
+        container.append( 
+                $('<button type="button" class="btn btn-default btn-'+type+'"></button>')
+                .css({"margin-top":"2px", "text-align":"left"})
+                .attr("name", v.id)
+                .text(v.value)
+                .on("click", callback)
+        )// append
+        .show(500); 
+  }); // each    
+  $(".filter."+type).show(500);
+}
+    
+function toggleActive(btn)  
+{
+    $(btn).parent().find("button").removeClass("active");
+    $(btn).addClass("active");
+}
+  
+function editModal(table, id, name)
+{
+    var w = $('.modal-window');
+    w.find(".form-group, div.alert").hide();
+    w.find(".form-group input").attr("disabled","disabled");
+    w.find("input[type='hidden']").val(0);
+    w.find("input[name='type']").val(table);
+
+    var okrug = $("#div-okrugs button.active");
+    var region = $("#div-regions button.active");
+    var city = $("#div-citys button.active");    
+        
+    switch(table)
+    {
+        case "city":    
+                        $("#modal-window-label").text("Редактирование города: " + name);
+
+                        w.find(".form-group").show();
+            
+                        w.find(".form-group input[name='name_okrug']").val(okrug.text());
+                        w.find(".form-group input[name='name_region']").val(region.text());
+                        w.find(".form-group input[name='name_city']").val(name).attr("disabled",null);
+                        
+                        w.find("input[name='id_okrug']").val(okrug.attr("name"));
+                        w.find("input[name='id_region']").val(region.attr("name"));
+                        w.find("input[name='id_city']").val(id);
+                        
+                        break;
+                     
+        case "region":  
+                        $("#modal-window-label").text("Редактирование региона: " + name);
+            
+                        w.find("div.form-group.okrug, div.form-group.region").show();
+                        w.find("div.form-group.city").hide();
+                        
+                        w.find(".form-group input[name='name_okrug']").val(okrug.text());
+                        w.find(".form-group input[name='name_region']").val(name).attr("disabled",null);
+
+                        w.find("input[name='id_okrug']").val(okrug.attr("name"));
+                        w.find("input[name='id_region']").val(id);
+                        
+                        break;
+        case "okrug":   
+                        $("#modal-window-label").text("Редактирование округа: " + name);
+                        
+                        w.find("div.form-group.okrug").show();
+                        w.find("div.form-group.region, div.form-group.city").hide();
+                        
+                        w.find(".form-group input[name='name_okrug']").val(name).attr("disabled",null);
+                        
+                        w.find("input[name='id_okrug']").val(id);
+                        
+                        break;
+        default: return;
+    }        
+    $('.modal-window').modal('show');
+}
+
+</script>

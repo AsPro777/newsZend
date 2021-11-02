@@ -1,0 +1,550 @@
+body.double-diagonal section.shop-checkout container.no-ver-padding, 
+body.double-diagonal section.shop-checkout .no-ver-padding,
+body.double-diagonal section.terms container.no-ver-padding, 
+body.double-diagonal section.terms .no-ver-padding {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}    
+body.double-diagonal section.shop-checkout container.no-top-padding, 
+body.double-diagonal section.shop-checkout .no-top-padding,
+body.double-diagonal section.terms container.no-top-padding, 
+body.double-diagonal section.terms .no-top-padding {
+	padding-top: 0 !important;
+}    
+
+form.global-search-form {
+    padding: 0 15px;
+}
+form.global-search-form div.condensed {                              
+    padding: 0;    
+    margin: 0;
+}
+
+@media(max-width:3840px) {
+    form.global-search-form div.condensed.small-button {                 
+        width: 50px;
+    }
+    form.global-search-form div.condensed.calendar-field {                
+        width: 150px;
+    }
+    form.global-search-form div.condensed.search-field {                
+        width: calc( ( 100% - 50px - 50px - 150px ) / 2  )
+    }    
+    form.global-search-form span.geocode {                              
+        margin-left: 17px;
+    }    
+    form.global-search-form .reverse-button, 
+    form.global-search-form .submit-button {           
+        margin: 0 !important;
+        width: 50px !important;
+    }    
+    form.global-search-form .button-title {                             
+        display: none;
+    }    
+    form.global-search-form input[class*="icon-"] + span {              
+        top: 10px;
+    }    
+    blockquote.welcome-tickets {
+        font-size: 14px;
+    }    
+} /* media */
+
+@media(max-width:770px) {
+    form.global-search-form div.condensed.small-button, 
+    form.global-search-form div.condensed.calendar-field, 
+    form.global-search-form div.condensed.search-field {
+        width: 100% !important;
+    }    
+    form.global-search-form span.geocode {                              
+        margin-left: 0px;
+    }    
+    form.global-search-form .form-control {                             
+        margin: 10px auto !important;
+        width: 100% !important;
+    }
+    form.global-search-form .submit-button {                            
+        margin: 10px auto 20px auto !important;
+    }
+    form.global-search-form .button-title {                             
+        display: contents;
+        font-size: 16px;
+    }    
+    form.global-search-form input[class*="icon-"] + span {              
+        top: 20px;
+    }
+    blockquote.welcome-tickets {
+    font-size: 15px;
+    }
+} /* media */
+
+form.global-search-form div.condensed input,                            
+form.global-search-form div.condensed button {
+    border-radius: 0;
+}
+form.global-search-form div.condensed button:hover {
+    opacity: .75;
+}
+form.global-search-form input[class*="icon-"] {                         
+  padding-right: 24px;
+  font-size: 18px !important;
+}
+form.global-search-form input[class*="icon-"] + span {                  
+    content: "";
+    font-family: FontAwesome;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;    
+    right: 5px;
+}
+form.global-search-form input.icon-calendar + span::before {            
+    content: "\f073";
+}
+form.global-search-form input.icon-close + span::before {               
+    content: "\2715";
+}
+/*
+    search form buttons
+*/
+form.global-search-form .reverse-button, 
+form.global-search-form .submit-button {               
+    border: 1px solid #444 !important;
+    color: #fff !important;
+    background-color: #343434 !important;
+    box-shadow: none !important;
+    height: 42px !important;
+    font-size: 13px !important;
+    transition: .2s !important;    
+}
+form.global-search-form .reverse-button::before {                       
+    font-family: FontAwesome !important;
+    font-size: 16px !important;
+    content: "\f0ec" !important;    
+}
+form.global-search-form .submit-button[disabled] {                          
+    background-color: #5a5a5a !important;
+    opacity: 1 !important;
+}
+
+form.global-search-form .form-control:focus {                           
+    border-color: #009240 !important;
+    outline: 0 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(0, 146, 64) !important;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(0, 146, 64) !important;
+}
+/*
+    подсказка / геокод
+*/
+form.global-search-form span.geocode {                   
+    font-size: 12px;
+    color: gray;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+form.global-search-form span.geocode.warning {          
+    color: orangered;
+}
+/*
+    autocomplete dropdown list
+*/
+li.search-autocomplete div {
+    background-color: #343434;
+    color: #f2f2f2;
+    line-height: 1;
+}
+li.search-autocomplete div:first-child {
+    font-weight: bold;
+}
+li.search-autocomplete div:last-child {    
+    font-size: 12px;
+    color: gray;
+}
+li.search-autocomplete div:last-child {    
+    border-bottom: 1px solid #444;
+}
+li.search-autocomplete div.ui-state-active {
+    background: #009240;
+    border: 1px #009240 solid;
+    color: #f2f2f2;
+}
+/*
+    Календарь
+*/
+
+.ui-datepicker td.show-date-min-cost[title]::after {
+    cursor: pointer;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    content: attr(title);
+    color: #777777;
+    display: block;
+    height: 1rem;
+    margin-top: -1rem;
+    text-align: right;
+    padding: 0px 2px;
+    line-height: 1;
+}
+.ui-datepicker td.show-date-min-cost span, 
+.ui-datepicker td.show-date-min-cost a {
+    padding-bottom: 5px;
+    padding-top: 0;
+}
+#ui-datepicker-div  {
+    background: #666;
+}
+
+.calendar-field #detail-spinner {
+    right: 25px;
+    position: absolute;
+    color: #009240;
+}
+
+@media(max-width:3840px) {
+    .ui-datepicker td.show-date-min-cost[title]::after {
+        font-size: 9px;
+    }
+    .calendar-field #detail-spinner {
+        top: 20%;
+    }
+}
+
+@media(max-width:770px) {
+    #ui-datepicker-div  {
+        left: 1% !important;
+        width: 98% !important;
+    }
+    .ui-datepicker-multi {
+        width: 100% !important;
+    }
+    .ui-datepicker-multi-2 .ui-datepicker-group {
+        width: 100% !important;
+    }
+    .ui-datepicker td.show-date-min-cost[title]::after {
+        font-size: 10px;
+    }    
+    .calendar-field #detail-spinner {
+        top: 40%;
+    }
+}
+
+.main-search-result {
+    display: none;
+}
+
+/*
+    Результаты поиска
+*/
+@media(max-width:3840px) {   
+    table.search-result-table tbody > tr > td:last-child {
+        width: 160px;    
+    }            
+}  /* media */
+
+@media(max-width:770px) {       
+    table.search-result-table tbody tr td {
+        width: 100%;    
+        display: block;        
+    }
+    table.search-result-table tbody tr {        
+        display: table;
+        width: 100%;
+    }
+    table.search-result-table tbody > tr > td:last-child {
+        width: 100%;
+        text-align: center;
+    }        
+    table.search-result-table tbody > tr.reis-detail > td {
+        width: 100%;    
+        text-align: left;        
+    }    
+    table.search-result-table div.button {
+        margin-bottom: 10px;
+        display: inline-block;
+        float: none !important;
+    }
+}  /* media */
+
+.mobile-label {
+    padding-right: 5px;
+    min-width: 125px;
+}
+
+input.icon-mail + span::before {
+    content: "\2709";
+}
+input.icon-ok + span::before {
+    content: "\2714";
+}
+input.icon-search + span::before {
+    content: "\f002";
+}
+
+/*
+    Таблица - результат поиска билетов
+*/
+
+table.search-result-table {
+    color: whitesmoke;
+    border-collapse: collapse;
+}
+.table.search-result-table > thead,
+.table.search-result-table > tfoot {    
+    display: none;
+}
+.table.search-result-table > thead th {    
+    font-weight: lighter;
+    color: #999;
+    background-color: #292929;
+}
+
+.table.search-result-table > tbody {
+    border: none;
+}
+
+table.search-result-table tbody tr:first-child td:not(:last-child) {
+    cursor: default;
+}
+.table.search-result-table > tbody.active,
+.table.search-result-table > tbody:hover {    
+    outline: 2px solid darkolivegreen;  
+    outline-offset: -2px;
+    background-color: #111;
+    opacity: 0.85;
+}
+table.search-result-table tbody:nth-child(even) {
+    background-color: #292929;
+}
+table.search-result-table tbody:nth-child(odd) {
+    background-color: transparent;
+}
+table.search-result-table .time {
+    font-weight: bold;
+    font-size: 20px;
+}
+table.search-result-table .city {
+    font-weight: normal;
+    margin-right: 5px;
+}    
+table.search-result-table .point {
+    font-weight: normal;
+    color: #999;
+}    
+table.search-result-table .cost {
+    font-weight: bold;
+    font-size: 20px;    
+}
+table.search-result-table .cost:after {
+    content: " \f158";
+    font-family: FontAwesome;
+    font-size: 14px;  
+    white-space: nowrap;
+}
+
+table.search-result-table .duration,
+table.search-result-table .places
+{
+    color: #999;
+}
+table.search-result-table .duration span:not(:first-child):before {
+    content: "";
+    -margin: 0 4px;
+}
+
+table.search-result-table .places span:not(:first-child):before {
+    content: "-";
+    margin: 0 4px;
+}
+
+table.search-result-table div.button {
+    border: 2px solid #009240;
+    padding: 2px;
+    border-radius: 25px;
+    text-align: center;
+    max-width: 160px;    
+    min-width: 160px;    
+    width: 160px;    
+    color: #fff;    
+    cursor: pointer;
+    font-size: 13px;
+    opacity: 1;
+    float: right;
+}
+table.search-result-table div.button > div:first-child {
+    font-weight: bold;    
+}
+
+table.search-result-table div.button:hover {
+    background-color: #009240;
+    -webkit-transition: 0.7s;
+    transition: all 0.7s;        
+}
+table.search-result-table div.button:hover div {
+    color: #fff;
+}
+
+table.search-result-table div.button.question {
+    max-width: 28px;    
+    min-width: 28px;    
+    width: 28px;    
+    margin: 10px;
+}
+
+div.button.close {
+    color: #009240;
+    width: 30px;
+    cursor: pointer;
+    float: right;
+    opacity: 1;
+    text-shadow: 1px 0px 1px #8bd8a9;
+}
+/*
+    Дополнительная таблица в результате поиска билетов
+*/
+.reis-detail span {
+    margin-right: 10px;
+}
+.reis-detail span.point.coord {
+    cursor: pointer;
+    color: #009240;
+    opacity: 0.8;
+    text-decoration: underline;
+}
+.reis-detail span.point.coord:hover {
+    cursor: pointer;
+    color: #009240;
+    opacity: 1;
+    text-decoration: none;
+}
+.reis-detail span.point-date {
+    font-weight: bold;
+}
+.reis-detail span.point-time {
+    color: #999;
+    padding-right: 5px;
+}
+
+/* 
+    левая сторона 
+*/
+div.reis-detail-left {
+    padding-left: 20px;
+ }
+/*
+    линия маршрута
+*/
+div.reis-detail-left div.path-line {
+    background: #009240;
+    height: calc(100% - 20px);
+    position: absolute;
+    width: 2px;
+    top: 10px;
+    left: 8px;
+}
+
+div.reis-detail-left div.path-point {
+    position: relative;
+}
+div.reis-detail-left div.path-point:nth-child(2)::before {
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 15px solid #009240;
+    border-bottom: none;
+    content: "";
+    margin: 0 0 0 -18px;
+    top: 5px;
+    position: absolute;
+    width: 0;
+    height: 0;
+    background: none;
+    border-radius: 3px;
+}
+div.reis-detail-left div.path-point:before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    margin: 0 0 0 -17px;
+    width: 12px;
+    height: 12px;
+    background: #171717;
+    border: 2px solid #009240;
+    border-radius: 50%;
+}
+div.reis-detail-left div.path-point:last-child::before {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    margin: 0 0 0 -17px;
+    width: 12px;
+    height: 12px;
+    background: #009240;
+    border-radius: 50%;
+    top: unset;
+}
+
+div.reis-detail-left span.city.selected-point {
+    color: #009240;
+    font-weight: bold;
+}
+div.reis-detail-left span.point.selected-point {
+    color: #009240;    
+}
+
+/* 
+    правая сторона 
+*/
+div.reis-detail-right {    
+    padding-right:0;    
+    padding-left:0;    
+}
+
+div.reis-detail-right .point-label {    
+    display: inline-block;
+    font-weight: bold;
+}
+
+div.reis-detail-right div#ymaps {
+    min-height: 350px;
+    width: 100%;
+    border: 1px #0b7138;
+    border-style: dashed;
+    margin-top: 10px;
+}
+
+table.search-result-table h3 {
+    text-transform: none;
+    margin: 10px;
+}
+
+.search-result-table h4 {
+    color: #009240 !important;
+    padding: 0;
+    margin: 0 !important;
+}
+.search-result-table h4.error {
+    color: #dc3545 !important;
+}
+
+input[type="checkbox"].check-point {
+    margin-right: 5px;
+    border: none;
+}
+
+.padding-left-0 {
+    padding-left:0 !important;
+}
+
+.search-result-table .icons {
+    white-space: nowrap;
+    margin-top: 5px;
+    text-align: center;
+    color:#007332;    
+    display: inline-block;
+}
+
+.search-result-table .icons i.fa{
+    margin-left: 5px;
+}
+.search-result-table .rt-table-info-icon-14 {
+    font-size: 20px !important;
+}

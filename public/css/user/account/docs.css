@@ -1,0 +1,73 @@
+form div.row {
+    padding-top: 5px;
+}
+form div.row-submit {
+    padding-top: 25px;
+}
+input.btn.right {
+    float: right;
+    margin-left: 5px;
+}
+div.scan-form {
+    display: none;
+}
+
+span.pull-right {
+    margin-left: 5px;
+    cursor: pointer;
+    color: #2aabd2;
+}
+span.pull-right:hover {
+    cursor: pointer;
+    color: #007fff;
+}
+span.pull-right.btn-xs {
+    color: #fff;
+}
+span.pull-right i.fa {
+    padding-top: 3px;
+}
+td.right {
+    text-align: right;
+}
+.dropdown-menu {
+ right:0; 
+ left:auto;   
+}
+.dropdown-menu > li > div {
+    padding: 5px;
+    text-align: center;
+}
+.dropdown-menu > li > div > input {
+    font-size: 11px;
+}
+.dropdown-menu > li > div > .send-to-email-ok {
+    font-size: 11px;
+    width: 50px;
+    padding: unset;
+    margin-top: 10px;
+}
+
+td.strike {
+     text-decoration: line-through;         
+}
+
+.fancytree-ico-e span.fancytree-icon ,
+.fancytree-has-children.fancytree-ico-cf span.fancytree-icon,
+span.fancytree-icon
+{
+    background-position: -80px -16px  !important;
+}
+
+.fancytree-ico-c .fancytree-icon::after, 
+.fancytree-ico-e .fancytree-icon::after, 
+.fancytree-exp-cl .fancytree-expander::after,
+.fancytree-exp-el .fancytree-expander::after, 
+.fancytree-exp-edl .fancytree-expander::after,
+.fancytree-has-children.fancytree-ico-ef .fancytree-icon::after,
+.fancytree-has-children.fancytree-ico-cf .fancytree-icon::after,
+.fancytree-ico-cf .fancytree-icon::after, 
+.fancytree-ico-ef .fancytree-icon::after
+{
+    content: '' !important;
+}

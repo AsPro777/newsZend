@@ -1,0 +1,35 @@
+<td class="tpl tpl-path">
+    <div name="from-path">
+        <span class="point-label">Посадка : </span>
+        <span class="city">г. <?= $this->nameFrom; ?></span>
+        <span class="point"><?= $this->reisParams["zayavka_from_address"]?></span>
+    </div>
+    <div name="to-path">
+        <span class="point-label">Высадка : </span>
+        <span class="city">г. <?= $this->nameTo; ?></span>
+        <span class="point"><?= $this->reisParams["zayavka_to_address"]?></span>
+    </div>
+</td>
+<td class="tpl place-info">
+    <div>
+        <span class="point-label">Рейс : </span>
+        <span class="point"><?= $this->reisParams["reis_num"]?></span>
+    </div>
+    <div>
+        <span class="point-label">Перевозчик : </span>
+        <span class="point"><?= $this->titleShort?></span>
+    </div>
+    <div>
+        <span class="point-label">Транспорт : </span>
+        <span class="point"><?= $this->bus->getVendor()?> <?= $this->bus->getModel()?></span>
+    </div>
+    <div>
+        <span class="point-label">Вместимость : </span>
+        <span class="point"><?= $this->bus->getSize()?> мест</span>
+    </div>
+</td>
+<td class="tpl tpl-question">
+    <div class="button question">
+        <span class="m-obile-only"> Как оформить билет </span> <i class="fa fa-question"></i>
+    </div>
+</td>

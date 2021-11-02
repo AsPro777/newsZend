@@ -1,0 +1,250 @@
+.textNews{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+div.control-load-file{
+    width: 100%;
+    text-align: center;
+}
+
+input.btn-public{
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+span[name^="add-file"] {
+    padding: 3px;
+    border-radius: 3px;
+    border: 1px solid #999;
+    display: inline-block;
+    margin: 5px;
+}
+
+span.iconClose::before {
+    content: "\2715";
+    font-family: FontAwesome;
+    font-size: 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+span.head{
+    font-weight: bold;
+    left: 50px;
+    position: relative;
+    top: 10px;
+}
+
+a.aForMainPic{
+    float: left;
+    left: 30px;
+    position: relative;
+}
+
+div.textForShortNews{
+    display: inline-block;
+    position: absolute;
+    left: 120px;
+    top: 30px;
+}
+
+
+div.whenSend, div.whoSend{
+    width: 50%;
+    float: left;
+    margin: 0 25% 0 25%;
+}
+
+legend.whenSend, legend.whoSend{
+    font-size: 14px;
+    padding-bottom: 10px;
+    text-transform:  none;
+    text-align: center;
+}
+
+input[name="person"]{
+    height: 26px;
+    display: inline-block;
+    margin-right: -15px;
+    margin-top: -5px;
+}
+    
+div.personalNews{
+    padding: 20px;
+    border: gray solid 1px;
+    margin-top: 20px;
+    border-radius: 5px;      
+}
+
+input#addUser{
+    margin-top: 20px;
+    margin-left: 40%;
+}
+
+table.usersTable{
+    
+    margin-top: 20px;
+}
+
+table.usersTable > thead{
+    background-color: #f0ebe8;
+}
+
+span.btn-xs{
+    cursor: pointer;
+}
+
+div.load-file , div.load-main-pic{
+    margin-top: 70px;
+}
+
+div.load-main-pic{
+    margin-top: 20px;
+}
+
+div.load-buttons{
+    position: absolute;
+    margin-left: 10px;
+}
+
+div.ui-dialog{
+    background-color: mintcream;
+}
+
+span.add-img{
+    margin-right: 20px;
+}
+
+input.add-img , select.add-img{
+    border-radius: 5px;
+    width: 100px;
+    border: 1px solid gray;
+}
+
+label.load-img::before{
+    content: "\f019";
+    font-family: FontAwesome;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+div.load{
+    /*margin-right: -18px;*/
+    width: 50px;
+    height: 20px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+}
+
+div.add-img{
+    margin-left: 48px;
+    display: inline;
+    width: 28%;
+    height: 24px;
+    border: 1px solid gray;
+}
+
+
+
+h1.singleNewsHead , .singleNewsMainPic , h1.noNews{
+    text-align: center;
+}
+
+div.singleNewsText{
+    margin-left: 50px;
+    font-size: 15px;
+}
+
+div.singleNewsText > img{
+    /*display: block;*/
+}
+
+ul.back-page{
+    margin-bottom: 20px;
+}
+
+div.changeNewsButtons{
+    position: relative;
+    float: right;
+    margin-right: 30px;
+    margin-top: -15px;
+    width: 10%;
+}
+
+div.changeNewsButtons > div{
+    margin-bottom: 10px;
+}
+
+div.choice{
+    position: relative !important;
+    width: 100%;
+    top: 3px !important;
+}
+
+.radio-inline{
+    margin-left: 0;
+    padding-left: 5px;
+    font-size: 13px;
+    text-align: center;
+}
+
+div.filter{
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 30px;
+    font-size: 13px;
+}
+
+ul.dateNews{
+    margin-top: 15px;
+}
+
+span.iconClose::before{
+    content: "\2715";
+    font-family: FontAwesome;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+div.dateReg{
+    margin-top: 20px;
+}
+
+input.edit-news{
+    margin-bottom: 30px;
+}
+
+div.edit-buttons{
+    margin-left: 10px;
+    text-align: center;
+}
+
+label.public-button , label.refresh-button{
+    margin-right: 20px;
+}
+
+div.edit-buttons{
+    margin-bottom: 40px;
+}
+
+div.content-wrapper{
+    padding-bottom:  20px;
+}
+
+div.content > div.ui-dialog  button.ui-dialog-titlebar-close{
+    visibility: hidden;
+}
+
+label.public-button , label.close-button {
+    padding-right: 8px !important
+} 
+
+label.close-button{
+    margin-left: 20px;
+}
+

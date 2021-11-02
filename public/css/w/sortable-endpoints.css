@@ -1,0 +1,93 @@
+ul.ui-sortable {
+    margin: 0;
+    list-style-type: none;
+    height: auto;
+    padding: 0px;
+}    
+ul.ui-sortable li span.glyphicon-sort{
+    cursor: move;
+    font-size: 13px;
+}
+ul.ui-sortable li{
+    color: #555;
+    margin: 0px; 
+    padding: 3px; 
+    border: 1px #f8d7d7 solid;
+}    
+ul.ui-sortable li.add{
+    margin-bottom: 0px;
+}
+ul.ui-sortable li div{
+    clear: both;
+}
+ul.ui-sortable li span.badge {
+    margin: 0px 6px 0px 6px;
+    font-size: 12px;
+    padding: 1px 4px 1px 4px;
+    line-height: 1;
+}
+.badge.selected {
+    background-color: green;
+}    
+button.select-point.selected {
+    background-color: green !important;
+    border-radius: 3px;
+    color: white;
+    max-width: 80%;
+    padding: 0 5px !important;
+    text-align: left;
+}    
+ul.ui-sortable li button.select-point {
+    padding: 0;
+    cursor: pointer;
+    background: 0 0;
+    border: 0;
+}
+ul.ui-sortable li button.add-point {
+    cursor: pointer;
+    background: #4ab4d7;
+    border: none;
+    border-radius: 3px;
+    padding: 0 10px;
+    color: white;
+}
+.my-label {
+    width: 240px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.ui-state-highlight { 
+    height: 5em; 
+}
+input.input-v{    
+    width: 40px;
+    text-align: center;
+    border: solid 1px gray;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .8;
+    float: right;
+    margin-right: 5px;    
+    padding: 0;
+}
+
+.col-md-12 {
+    padding-bottom: 15px;
+}
+
+.ui-front {
+    z-index: 10010 !important; /* type select list on modal */
+    max-height: 70%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.float-right {
+    float: right;
+    margin-right: 5px;
+}
+.select-point {
+    width: 97%;
+    cursor: move;    
+    display: inline-block;
+}

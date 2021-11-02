@@ -1,0 +1,27 @@
+<?
+    $showPrefix = isset($showPrefix)?$showPrefix:true;
+?>
+
+<?php if(!empty($successMessage)): ?>
+    <div class="alert alert-success alert-bordered settings-block">
+      <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+      <?php if($showPrefix): ?>
+      <strong>
+          Успешно! 
+      </strong> 
+     <?php endif; ?>
+      <?=$successMessage?>
+    </div>   
+<?php endif; ?>
+
+<?php if(!empty($errorMessage)) : ?>
+    <div class="alert alert-danger alert-bordered settings-block">
+        <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+              <?php if($showPrefix): ?>
+          <strong>          
+              Неудачно!
+          </strong> 
+         <?php endif; ?>
+         <?=$errorMessage?>      
+    </div>
+<?php endif ?>

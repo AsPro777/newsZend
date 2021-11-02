@@ -1,0 +1,351 @@
+<?php
+    $ud = $user->getData();
+//    var_dump($ud);
+?>
+
+<div class="row common">
+    <div class="settings-block">
+        <div class="panel">
+
+            <div class="panel-heading">
+                <h5 class="panel-title">Владелец учетной записи</h5>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Фамилия *:
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-control" name="f" value="<?=$this->escapeHtml($user->getF())?>" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        Имя *:
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-control" name="i" value="<?=$this->escapeHtml($user->getI())?>" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        Отчество *:
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-control" name="o" value="<?=$this->escapeHtml($user->getO())?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Пол *:
+                    </div>
+                    <div class="col-md-7">
+                        <select name="sex" class="form-control">
+                            <option value="1" <?=(($dvf->filter("profile.user.sex", $ud)=="1")?"selected":"")?>>Мужской</option>
+                            <option value="0" <?=(($dvf->filter("profile.user.sex", $ud)=="0")?"selected":"")?>>Женский</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Дата рождения *:
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-control" name="dr" value="<?=$this->escapeHtml($dvf->filter("profile.user.dr", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row view-only-fiz">
+                    <legend class="text-bold">Удостоверение личности</legend>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Удостоверяющий документ *:
+                    </div>
+                    <div class="col-md-7">
+                        <select class="form-control" name="passport_type"
+                                data-init-id="<?=$this->escapeHtml($dvf->filter("profile.user.passport_type", $ud))?>"
+                                data-init-val="<?=$this->escapeHtml($dvf->filter("profile.user.passport_type_txt", $ud))?>"
+                        ></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Серия и номер *:
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-control" name="passport" placeholder='Введите номер в соответствии с подсказкой' value="<?=$this->escapeHtml($dvf->filter("profile.user.passport", $ud))?>">
+                        <div id="doc-num-example"></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Дата выдачи *:
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-control" name="passport_date" value="<?=$this->escapeHtml($dvf->filter("profile.user.passport_date", $ud))?>">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Кем выдан *:
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-control" name="passport_org" value="<?=$this->escapeHtml($dvf->filter("profile.user.passport_org", $ud))?>">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                     E-mail *:
+                    </div>
+                    <div class="col-md-7">
+                    <input class="form-control" name="email" placeholder="name@example.com" value="<?=$this->escapeHtml($user->getEmail())?>" type="text">
+                    </div>
+                </div>
+
+                <!--div class="row">
+                    <div class="col-md-5">
+                        Документы:
+                    </div>
+                    <div class="col-md-7 right" data-scan-folder="Учетные данные" data-scan-tag="common">
+                        <button name="docslist" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Загруженные</button>
+                        <button name="uploader" class="btn btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Загрузить</button>
+                    </div>
+                </div-->
+
+                <div class="row">
+                    <div class="col-md-12 center">
+                        <input name="submitter" data-node="common" class="btn btn-primary" value="Сохранить" type="button">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row org">
+    <div class="settings-block">
+        <div class="panel">
+              <div class="panel-heading">
+                <h5 class="panel-title">Организация / ИП</h5>
+              </div>
+              <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Страна регистрации *:
+                    </div>
+                    <div class="col-md-7">
+                        <select class="form-control" name="country"
+                                data-init-id="<?=$this->escapeHtml($dvf->filter("profile.org.country", $ud))?>"
+                                data-init-val="<?=$this->escapeHtml($dvf->filter("profile.org.country_txt", $ud))?>"
+                        ></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Организационно правовая форма:
+                    </div>
+                    <div class="col-md-7">
+                        <select name="opf" class="form-control">
+                            <option value="0" <?=(($dvf->filter("profile.org.opf", $ud)==0)?"selected":"")?>>Физическое лицо</option>
+                            <option value="1" <?=(($dvf->filter("profile.org.opf", $ud)==1)?"selected":"")?>>Юридическое лицо</option>
+                            <option value="2" <?=(($dvf->filter("profile.org.opf", $ud)==2)?"selected":"")?>>Индивидуальный предприниматель</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row view-only-firm">
+                    <div class="col-md-5">
+                        Полное наименование *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="title" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.title", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row view-only-firm">
+                    <div class="col-md-5">
+                        Сокращенное наименование *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="title_short" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.title_short", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row view-only-firm">
+                    <div class="col-md-5">
+                        Должность руководителя *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="director" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.director", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row view-only-firm view-only-ip">
+                    <div class="col-md-5">
+                       ФИО руководителя *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="fio" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.fio", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row view-only-fiz">
+                    <div class="col-md-5">
+                       Фамилия *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="f" class="form-control" value="<?=$this->escapeHtml($user->getF())?>" type="text" readonly>
+                    </div>
+                </div>
+                <div class="row view-only-fiz">
+                    <div class="col-md-5">
+                       Имя *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="i" class="form-control" value="<?=$this->escapeHtml($user->getI())?>" type="text" readonly>
+                    </div>
+                </div>
+                <div class="row view-only-fiz">
+                    <div class="col-md-5">
+                       Отчество *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="o" class="form-control" value="<?=$this->escapeHtml($user->getO())?>" type="text" readonly>
+                    </div>
+                </div>
+
+                <div class="row view-only-firm">
+                    <div class="col-md-5">
+                       Действует на основании *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="osnova" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.osnova", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row  view-only-firm view-only-ip">
+                    <div class="col-md-5">
+                       ИНН *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="inn" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.inn", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row view-only-firm">
+                    <div class="col-md-5">
+                       КПП *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="kpp" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.kpp", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row view-only-firm view-only-ip">
+                    <div class="col-md-5">
+                       ОГРН(ИП) *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="ogrn" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.org.ogrn", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <!--div class="row">
+                    <div class="col-md-5">
+                        Документы:
+                    </div>
+                    <div class="col-md-7 right" data-scan-folder="Организация \ ИП" data-scan-tag="org">
+                        <button name="docslist" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Загруженные</button>
+                        <button name="uploader" class="btn btn-default"><span class="glyphicon glyphicon-cloud-upload"></span> Загрузить</button>
+                    </div>
+                </div-->
+
+                <div class="row">
+                    <div class="col-md-12 center">
+                        <input name="submitter" data-node="org" class="btn btn-primary" value="Сохранить" type="button">
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row contact">
+    <div class="settings-block">
+        <div class="panel">
+              <div class="panel-heading">
+                  <h5 class="panel-title">Контакты</h5>
+              </div>
+              <div class="panel-body">
+
+                <div class="row view-only-firm">
+                    <div class="col-md-5">
+                        Юридический адрес *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="uaddress" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.contact.uaddress", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                   <div class="col-md-5 view-only-firm view-only-ip">
+                        Фактический адрес *:
+                    </div>
+                   <div class="col-md-5 view-only-fiz">
+                        Адрес прописки *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="faddress" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.contact.faddress", $ud))?>" type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Телефон основной *:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="phone1" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.contact.phone1", $ud))?>" maxlength="16" type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        Телефон резервный:
+                    </div>
+                    <div class="col-md-7">
+                        <input name="phone2" class="form-control" value="<?=$this->escapeHtml($dvf->filter("profile.contact.phone2", $ud))?>" maxlength="16" type="text">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 center">
+                        <input name="submitter" data-node="contact" class="btn btn-primary" value="Сохранить" type="button">
+                    </div>
+                </div>
+
+              </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row contact">
+    <div class="settings-block">
+        Поля, помеченные знаком <big> <b>*</b> </big> должны быть заполнены!
+    </div>
+</div>
+

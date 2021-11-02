@@ -1,0 +1,52 @@
+.right {
+    float: right !important;
+}    
+.panel-heading-correct {
+    -padding: 0 0 23px 0; 
+    -margin-bottom: 2px;    
+}
+.form-control-correct {
+    height: 22px !important;
+    min-width: 90px;
+}
+.input-group-addon-correct {
+    height: 22px !important;
+    padding: 0px 5px !important;
+    font-size: small !important;
+}
+span.glyphicon,
+span.submitter {
+    cursor: pointer;
+}
+
+div.panel-body button {
+    margin-left: 5px;
+    border-radius: 6px;
+    border:none;
+}
+
+.btn-group {
+    border: 1px groove;
+    border-style: outset;
+    border-radius: inherit;   
+}
+table.table-condensed tbody tr.gray {
+    background-color: #f4f4f4;
+}
+
+form div.filter {
+    margin-top: 3px;
+    min-width: 410px;
+}
+
+form span.fixed-label {
+    min-width: 140px;
+    text-align: unset;
+}
+
+form span.submitter {
+    margin: 3px 0 0 10px;
+    border: solid 1px #e4ded6;
+    padding: 3px;
+    border-radius: 3px;
+}
