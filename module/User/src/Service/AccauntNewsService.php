@@ -16,8 +16,7 @@ class AccauntNewsService
     private $user = null;
 
     protected $pageSize = 3;
-    const ADMIN = "Михаил Обельченко";
-    const PODPIS = "\r\nС Уважением, технический специалист Гоубас ".self::ADMIN;
+    
 
 
     public function __construct($entityManager,$user)
@@ -140,7 +139,7 @@ class AccauntNewsService
        $lastId=$getLastId[0]->getId();
 
        /*0-послать всем зарегистрированным пользователям
-         1-послать послать группе пользователей или конкретному пользователю*/
+         1-послать группе пользователей или конкретному пользователю*/
        if($isAllOrGroup==1){
 
          if(!empty($post['idPerson'])) {
