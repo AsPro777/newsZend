@@ -97,7 +97,7 @@ class ResponsesManager
 
     public function sms($post)
     {
-        $multi = ["79107325800" => "Hello World",];
+        $multi = ["" => "Hello World",];
         \Application\Filter\Sms::send($multi);
         return ["success" => 1];
     }
