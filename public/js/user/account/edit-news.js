@@ -331,7 +331,7 @@ $(function () {
       
     var classPic=$(elem).parent().attr('class');
     
-    if(classPic!=='singleNewsMainPic'){ alert(1221);
+    if(classPic!=='singleNewsMainPic'){ 
      var updateTextWithImg=$('div.singleNewsText').html();
      var textWithoutDiv=updateTextWithImg.split('<div id="deleteImg">');
      var updateText='';
